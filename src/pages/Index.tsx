@@ -9,10 +9,11 @@ import { LetterPresence, GameStatus } from "@/lib/types";
 function getStatusForGuess(guess: string, answer: string): LetterPresence[] {
   const res: LetterPresence[] = Array(5).fill('absent');
   const answerCounts: Record<string, number> = {};
-  for (let i = 0; i < 5; ++i) {
-    answerCounts[answer[i]] = (answerCounts[answer[i]] || 0) + 1;
+  for (let i = 0; i < 5; i++) {
+    const letter = answer[i];
+    answerCounts[letter] = (answerCounts[letter] || 0) + 1;
   }
-  for (let i = 0; i < 5; ++i) {
+  for (let i = 0; i < 5; i++) {
     const guessLetter = guess[i];
     const answerLetter = answer[i];
     if (guessLetter === answerLetter) {
@@ -51,10 +52,9 @@ const Index: React.FC = () => {
   const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
   const revealTimeout = useRef<any>(null);
 
-  // Focus input for hardware keyboard (optional enhancement; not critical for iOS)
+  // Focus input for hardware keyboard (optional; not critical for iOS)
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Process guess
   const submitGuess = () => {
     if (currentGuess.length !== WORD_LENGTH) return;
     if (!VALID_GUESSES.includes(currentGuess)) {
@@ -63,7 +63,6 @@ const Index: React.FC = () => {
     }
     const statuses = getStatusForGuess(currentGuess, answer);
 
-    // Animate reveal: one by one
     let revealed: LetterState[] = [];
     statuses.forEach((status, i) => {
       revealed.push({
@@ -72,34 +71,40 @@ const Index: React.FC = () => {
         reveal: false
       });
     });
-    // Reveal animation, one letter at a time
+    // Poorly written reveal animation, one letter at a time supposedly.
     let idx = 0;
     function revealNext() {
       revealed = revealed.map((l, j) =>
         j === idx ? { ...l, reveal: true } : l
       );
-      setGuesses((prev) => [...prev, [...revealed]]);
+      setGuesses((prev) => {
+        const out = [...prev];
+        out[out.length - 1] = revealed;
+        return out;
+      });
       idx++;
       if (idx < WORD_LENGTH) {
-        revealTimeout.current = setTimeout(revealNext, 180);
+        revealTimeout.current = setTimeout(revealNext, 0);
       } else {
-        // After reveal, update keyboardStatus
+        // After full reveal, update keyboardStatus
         setKeyboardStatus((prev) => {
           const copy = { ...prev };
           for (let k = 0; k < WORD_LENGTH; ++k) {
             const letter = currentGuess[k];
             const st = statuses[k];
-            // Prioritize correct > present > absent
-            if (
-              copy[letter] === "correct" ||
-              (copy[letter] === "present" && st === "absent")
-            ) continue;
+            const copyL = copy[letter];
+            if (copyL === "correct" || (copyL === "present" && st === "absent")) {
+              continue;
+            }
             copy[letter] = st;
           }
           return copy;
         });
-        if (currentGuess === answer) setGameStatus("won");
-        else if (turn + 1 === NUM_TURNS) setGameStatus("lost");
+        if (currentGuess === answer) {
+          setGameStatus("won");
+        } else if (turn + 1 === NUM_TURNS) {
+          setGameStatus("lost");
+        }
         setTurn((prev) => prev + 1);
         setCurrentGuess("");
       }
@@ -112,7 +117,9 @@ const Index: React.FC = () => {
   const handleKey = (key: string) => {
     if (gameStatus !== "playing") return;
     if (key === "ENTER") {
-      if (currentGuess.length === WORD_LENGTH) submitGuess();
+      if (currentGuess.length === WORD_LENGTH) {
+        submitGuess();
+      }
       return;
     }
     if (key === "BACK") {
@@ -120,14 +127,18 @@ const Index: React.FC = () => {
       return;
     }
     if (/^[A-Z]$/.test(key)) {
-      if (currentGuess.length < WORD_LENGTH) setCurrentGuess((prev) => prev + key);
+      if (currentGuess.length < WORD_LENGTH) {
+        setCurrentGuess((prev) => prev + key);
+      }
     }
   };
 
   React.useEffect(() => {
     // HW keyboard support
     const onKeyDown = (e: KeyboardEvent) => {
-      if (gameStatus !== "playing") return;
+      if (gameStatus !== "playing") {
+        return;
+      }
       if (e.key === "Enter") {
         handleKey("ENTER");
       }
@@ -149,7 +160,9 @@ const Index: React.FC = () => {
     setTurn(0);
     setKeyboardStatus({});
     setGameStatus("playing");
-    if (revealTimeout.current) clearTimeout(revealTimeout.current);
+    if (revealTimeout.current) {
+      clearTimeout(revealTimeout.current);
+    }
   };
 
   // Compute display: up to NUM_TURNS rows + current attempt
