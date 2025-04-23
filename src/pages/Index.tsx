@@ -169,16 +169,15 @@ const Index: React.FC = () => {
   return (
     <main className="min-h-screen flex flex-col items-center justify-start gap-6"
       style={{ background: "linear-gradient(120deg, #E5DEFF 0%, #F1F0FB 100%)", fontFamily: "Inter, system-ui,sans-serif" }}>
-      <div className="w-full py-8 md:py-12 text-center">
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-0 text-wordle-correct drop-shadow-sm">WordleGo</h1>
-        <p className="text-base md:text-lg font-medium text-wordle-absent mb-2">Play Wordle offline, anywhere.</p>
+      <div className="w-full py-3 md:py-6 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-0 text-wordle-correct drop-shadow-sm">Wordle</h1>
       </div>
       <div className="mb-2" style={{ minHeight: 348 }}>
         <WordleBoard guesses={guesses} currentGuess={currentGuess} turn={turn} />
         {(gameStatus === "won" || gameStatus === "lost") && (
           <div className="my-4 flex flex-col items-center">
             <span className="text-lg md:text-xl font-semibold text-wordle-correct mb-2 animate-bounce">
-              {gameStatus === "won" ? "🎉 You guessed it!" : `The word was: ${answer}`}
+              {gameStatus === "won" ? "🎉 Correct!!" : `The word was: ${answer}`}
             </span>
             <button className="px-4 py-2 my-2 rounded-lg bg-wordle-accent text-white hover:bg-wordle-correct transition-all shadow-md" onClick={handleRestart}>
               New Game
@@ -187,7 +186,7 @@ const Index: React.FC = () => {
         )}
       </div>
       <WordleKeyboard onKey={handleKey} keyStatus={keyboardStatus} />
-      <div className="mt-8 mb-2 text-sm text-gray-400 max-w-[340px] text-center">Open this as a native app for full offline play, or try in your browser!</div>
+      <div className="mt-8 mb-2 text-sm text-gray-400 max-w-[340px] text-center"></div>
       <input ref={inputRef} style={{ position: "absolute", left: -1000, top: -1000 }} tabIndex={-1} readOnly aria-hidden />
     </main>
   );

@@ -7,7 +7,7 @@ import { LetterPresence } from '@/lib/types'
 const KEY_ROWS = [
   ["Q","W","E","R","T","Y","U","I","O","P"],
   ["A","S","D","F","G","H","J","K","L"],
-  ["ENTER","Z","X","C","V","B","N","M","BACK"]
+  ["BACK","Z","X","C","V","B","N","M","ENTER"]
 ];
 
 type KeyStatus = Record<string, LetterPresence | undefined>;
@@ -18,7 +18,7 @@ interface WordleKeyboardProps {
 }
 
 export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus }) => (
-  <div className="flex flex-col gap-2 w-full max-w-md mx-auto select-none">
+  <div className="flex flex-col gap-2 px-12 w-full max-w-md mx-auto select-none">
     {KEY_ROWS.map((row, ri) => (
       <div key={ri} className="flex justify-center gap-1">
         {row.map((key) => {
@@ -27,7 +27,7 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
           else if (keyStatus[key] === "present") bg = "bg-wordle-present";
           else if (keyStatus[key] === "absent") bg = "bg-wordle-absent text-gray-400";
           if (key === "ENTER" || key === "BACK") bg = "bg-wordle-accent text-white";
-          const width = key == 'ENTER' ? 75 : 36;
+          const width = key == 'ENTER' ? 60 : 30;
 
           return (
             <button
