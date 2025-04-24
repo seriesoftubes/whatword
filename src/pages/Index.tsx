@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from "react";
-import { ANSWERS, VALID_GUESSES } from "../wordlist";
+import { WORDS } from "../words";
 import { WordleBoard } from "../components/WordleBoard";
 import { WordleKeyboard } from "../components/WordleKeyboard";
 import { LetterPresence, GameStatus } from "@/lib/types";
@@ -27,7 +27,16 @@ function getStatusForGuess(guess: string, answer: string): LetterPresence[] {
 }
 
 function pickRandomWord(): string {
-  return ANSWERS[Math.floor(Math.random() * ANSWERS.length)];
+  const index = Math.floor(Math.random() * WORDS.size);
+  let i = 0;
+  for (const word of WORDS) {
+    if (i == index) {
+      console.log('Answer:', word);
+      return word;
+    }
+    i++;
+  }
+  throw new Error("unreachable");
 }
 
 interface LetterState {
@@ -57,7 +66,7 @@ const Index: React.FC = () => {
 
   const submitGuess = () => {
     if (currentGuess.length !== WORD_LENGTH) return;
-    if (!VALID_GUESSES.includes(currentGuess)) {
+    if (!WORDS.has(currentGuess)) {
       window.alert("Not in word list.");
       return;
     }
