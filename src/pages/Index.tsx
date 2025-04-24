@@ -13,12 +13,20 @@ function getStatusForGuess(guess: string, answer: string): LetterPresence[] {
     const letter = answer[i];
     answerCounts[letter] = (answerCounts[letter] || 0) + 1;
   }
+  // Calculate the "correct" slots.
   for (let i = 0; i < 5; i++) {
     const guessLetter = guess[i];
     const answerLetter = answer[i];
     if (guessLetter === answerLetter) {
       res[i] = "correct";
-    } else if (answerCounts[guessLetter]) {
+      answerCounts[guessLetter]--;
+    }
+  }
+  // Now calculate the "present" ones.
+  for (let i = 0; i < 5; i++) {
+    const guessLetter = guess[i];
+    const answerLetter = answer[i];
+    if (guessLetter !== answerLetter && answerCounts[guessLetter] > 0) {
       res[i] = "present";
       answerCounts[guessLetter]--;
     }
