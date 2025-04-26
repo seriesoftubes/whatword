@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { WORDS } from "@/words";
 import { WordleBoard } from "@/components/WordleBoard";
-import { WordleKeyboard } from "@/components/WordleKeyboard";
+import { WordleKeyboard, Key } from "@/components/WordleKeyboard";
 import { LetterPresence, GameStatus } from "@/lib/types";
 import { blurEverything } from "@/lib/utils";
 
@@ -130,22 +130,21 @@ const Index: React.FC = () => {
   };
 
   // Keyboard input handler
-  const handleKey = (key: string) => {
+  const handleKey = (key: Key) => {
     if (gameStatus !== "playing") return;
+
     if (key === "ENTER") {
       if (currentGuess.length === WORD_LENGTH) {
         submitGuess();
       }
-      return;
-    }
-    if (key === "BACK") {
+    } else if (key === "BACK") {
       setCurrentGuess((prev) => prev.slice(0, -1));
-      return;
-    }
-    if (/^[A-Z]$/.test(key)) {
+    } else if (/^[A-Z]$/.test(key)) {
       if (currentGuess.length < WORD_LENGTH) {
         setCurrentGuess((prev) => prev + key);
       }
+    } else {
+      throw new Error("unrecognized key: " + key);
     }
   };
 
@@ -161,13 +160,12 @@ const Index: React.FC = () => {
       }
       else if (e.key === "Backspace") {
         handleKey("BACK");
-      } else if (/^[a-zA-Z]$/.test(e.key)) {
-        handleKey(e.key.toUpperCase());
+      } else if (e.key.length === 1 && /^[a-zA-Z]$/.test(e.key)) {
+        handleKey(e.key.toUpperCase() as Key);
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-    // eslint-disable-next-line
   }, [currentGuess, gameStatus, turn]);
 
   const handleRestart = () => {
