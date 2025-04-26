@@ -27,7 +27,7 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
           else if (keyStatus[key] === "present") bg = "bg-wordle-present";
           else if (keyStatus[key] === "absent") bg = "bg-wordle-absent text-gray-400";
           if (key === "ENTER" || key === "BACK") bg = "bg-wordle-accent text-white";
-          const width = key == 'ENTER' ? 60 : 30;
+          const width = key == 'ENTER' ? 75 : 30;
 
           return (
             <button
@@ -35,7 +35,7 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
               className={cn(
                 "flex-1 px-1 py-2 md:py-3 md:px-2 rounded-md md:rounded-lg font-semibold text-base md:text-lg transition-all duration-200",
                 bg,
-                "active:scale-95"
+                "active:scale-50"
               )}
               style={{ minWidth: width }}
               onClick={() => onKey(key)}
