@@ -1,74 +1,102 @@
-<svg
-    version="1.0"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="512"
-    height="512"
-    viewBox="0 0 512 512"
-  >
-    <svg id="global-svg-defs" version="1.0" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 340.000000 250.000000" preserveAspectRatio="xMidYMid meet" color-interpolation-filters="sRGB" class="el-tooltip" style="margin: auto;" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="512" height="512" viewBox="0 0 512 512">
+  <svg id="global-svg-defs" version="1.0" xmlns="http://www.w3.org/2000/svg"
+       width="0" height="0" viewBox="0 0 340.000000 250.000000"
+       preserveAspectRatio="xMidYMid meet" color-interpolation-filters="sRGB"
+       class="el-tooltip" style="margin: auto;" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-      <pattern id="watermark" patternUnits="userSpaceOnUse" width="100%" height="100%">
-        <image xlink:href="https://www.logoai.com/img/watermark/LOGOAI-watermark.png" x="0" y="0" width="100%" height="100%">
-        </image>
-      </pattern>
-                    <linearGradient id="92" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#fa71cd"></stop>
-          <stop offset="100%" stop-color="#9b59b6"></stop>
-        </linearGradient>
-              <linearGradient id="93" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#f9d423"></stop>
-          <stop offset="100%" stop-color="#f83600"></stop>
-        </linearGradient>
-              <linearGradient id="94" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#0064d2"></stop>
-          <stop offset="100%" stop-color="#1cb0f6"></stop>
-        </linearGradient>
-              <linearGradient id="95" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#f00978"></stop>
-          <stop offset="100%" stop-color="#3f51b1"></stop>
-        </linearGradient>
-              <linearGradient id="96" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#7873f5"></stop>
-          <stop offset="100%" stop-color="#ec77ab"></stop>
-        </linearGradient>
-              <linearGradient id="97" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#f9d423"></stop>
-          <stop offset="100%" stop-color="#e14fad"></stop>
-        </linearGradient>
-              <linearGradient id="98" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#009efd"></stop>
-          <stop offset="100%" stop-color="#2af598"></stop>
-        </linearGradient>
-              <linearGradient id="99" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#ffcc00"></stop>
-          <stop offset="100%" stop-color="#00b140"></stop>
-        </linearGradient>
-              <linearGradient id="100" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#d51007"></stop>
-          <stop offset="100%" stop-color="#ff8177"></stop>
-        </linearGradient>
-              <linearGradient id="102" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#a2b6df"></stop>
-          <stop offset="100%" stop-color="#0c3483"></stop>
-        </linearGradient>
-              <linearGradient id="103" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#7ac5d8"></stop>
-          <stop offset="100%" stop-color="#eea2a2"></stop>
-        </linearGradient>
-              <linearGradient id="104" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#00ecbc"></stop>
-          <stop offset="100%" stop-color="#007adf"></stop>
-        </linearGradient>
-          </defs>
+      <linearGradient id="92" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#fa71cd"></stop>
+        <stop offset="100%" stop-color="#9b59b6"></stop>
+      </linearGradient>
+      <linearGradient id="93" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f9d423"></stop>
+        <stop offset="100%" stop-color="#f83600"></stop>
+      </linearGradient>
+      <linearGradient id="94" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0064d2"></stop>
+        <stop offset="100%" stop-color="#1cb0f6"></stop>
+      </linearGradient>
+      <linearGradient id="95" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f00978"></stop>
+        <stop offset="100%" stop-color="#3f51b1"></stop>
+      </linearGradient>
+      <linearGradient id="96" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7873f5"></stop>
+        <stop offset="100%" stop-color="#ec77ab"></stop>
+      </linearGradient>
+      <linearGradient id="97" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f9d423"></stop>
+        <stop offset="100%" stop-color="#e14fad"></stop>
+      </linearGradient>
+      <linearGradient id="98" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#009efd"></stop>
+        <stop offset="100%" stop-color="#2af598"></stop>
+      </linearGradient>
+      <linearGradient id="99" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ffcc00"></stop>
+        <stop offset="100%" stop-color="#00b140"></stop>
+      </linearGradient>
+      <linearGradient id="100" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#d51007"></stop>
+        <stop offset="100%" stop-color="#ff8177"></stop>
+      </linearGradient>
+      <linearGradient id="102" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#a2b6df"></stop>
+        <stop offset="100%" stop-color="#0c3483"></stop>
+      </linearGradient>
+      <linearGradient id="103" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7ac5d8"></stop>
+        <stop offset="100%" stop-color="#eea2a2"></stop>
+      </linearGradient>
+      <linearGradient id="104" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#00ecbc"></stop>
+        <stop offset="100%" stop-color="#007adf"></stop>
+      </linearGradient>
+    </defs>
   </svg>
-    <rect
-      x="0"
-      y="0"
-      width="100%"
-      height="100%"
-      fill="transparent"
-      fill-opacity="1"
-    ></rect>
-    <svg data-v-0dd9719b="" version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" color-interpolation-filters="sRGB" style="margin: auto;"> <rect data-v-0dd9719b="" x="0" y="0" width="100%" height="100%" fill="#ffffff" fill-opacity="1" class="background" style="display: none;"/> <rect data-v-0dd9719b="" x="0" y="0" width="100%" height="100%" fill="url(#watermark)" fill-opacity="1" class="watermarklayer" style="display: none;"/> <g data-v-0dd9719b="" fill="#333" class="iconsvg-imagesvg"><rect fill="#333" fill-opacity="0" stroke-width="2" x="0" y="0" width="100" height="100" class="image-rect"/> <svg viewBox="0 0 60 60" x="0" y="0" width="100" height="100" class="image-svg-svg bn" style="overflow: visible;"><g hollow-target=""><g><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;" width="60" height="60" x="0" y="0" filtersec="colorsb5198793310" filter="url(#h6cGSsXVJiJyhFL5YnHW_)"><g transform="scale(1, 1) skewX(0)"><path d="M100 0v100H0V0h100zM90 10H10v80h80V10z" fill="#333"/></g><defs><filter id="h6cGSsXVJiJyhFL5YnHW_"><feColorMatrix type="matrix" values="0 0 0 0 0.19921875  0 0 0 0 0.19921875  0 0 0 0 0.19921875  0 0 0 1 0"/></filter></defs></svg></g> <g filter="url(#colors964683520)"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 70.8046875 73.72265625" width="45" height="45" x="7.5" y="7.5" class="image-svg-letter"><path transform="translate(7.3125 63.3515625)" d="M28.86-44.89L28.86-44.89Q30.83-44.89 32.34-44.40Q33.86-43.91 34.98-43.08Q36.11-42.26 36.88-41.19Q37.65-40.11 38.14-38.95L38.14-38.95Q38.57-40.64 38.85-42.06Q39.13-43.49 39.30-44.89Q39.48-46.30 39.55-47.78Q39.62-49.25 39.62-51.01L39.62-51.01Q39.62-51.50 39.66-52.22Q39.69-52.95 39.80-53.79Q39.90-54.63 40.15-55.56Q40.39-56.50 40.82-57.45L40.82-57.45Q41.38-58.64 42.24-59.71Q43.10-60.79 44.26-61.59Q45.42-62.40 46.86-62.88Q48.30-63.35 50.03-63.35L50.03-63.35Q51.68-63.35 53.67-62.72Q55.65-62.09 57.50-60.89Q59.34-59.70 60.82-57.99Q62.30-56.29 62.93-54.11L62.93-54.11Q63.25-52.98 63.37-51.94Q63.49-50.91 63.49-49.99L63.49-49.99Q63.49-47.85 63.12-45.76Q62.75-43.66 62.26-41.55L62.26-41.55Q60.43-33.64 57.73-25.88Q55.02-18.11 51.68-10.69L51.68-10.69Q50.73-8.61 49.54-6.24Q48.34-3.87 46.88-1.53Q45.42 0.81 43.70 2.97Q41.98 5.13 39.94 6.77Q37.90 8.40 35.54 9.39Q33.19 10.37 30.52 10.37L30.52 10.37Q27.84 10.37 25.79 9.47Q23.73 8.58 22.20 7.21Q20.67 5.84 19.62 4.18Q18.56 2.53 17.89 1.05L17.89 1.05Q16.70 2.71 15.33 4.24Q13.96 5.77 12.36 6.94Q10.76 8.12 8.89 8.82Q7.03 9.53 4.82 9.53L4.82 9.53Q2.29 9.53 0.35 8.68Q-1.58 7.84-2.97 6.36Q-4.36 4.89-5.26 2.92Q-6.15 0.95-6.57-1.30L-6.57-1.30Q-6.93-3.09-7.12-4.87Q-7.31-6.64-7.31-8.47L-7.31-8.47Q-7.31-11.36-7.03-14.22Q-6.75-17.09-6.36-19.93L-6.36-19.93Q-5.63-25.38-4.06-30.46Q-2.50-35.54-0.56-40.25L-0.56-40.25Q-0.07-41.41 0.39-42.57Q0.84-43.73 1.41-44.86L1.41-44.86Q2.39-46.86 4.03-48.29Q5.66-49.71 7.54-50.64Q9.42-51.57 11.29-52.01Q13.15-52.45 14.59-52.45L14.59-52.45Q15.86-52.45 17.42-52.03Q18.98-51.61 20.41-50.63Q21.83-49.64 22.87-48.04Q23.91-46.44 24.08-44.09L24.08-44.09Q26.30-44.89 28.86-44.89ZM15.64-20.29L15.64-20.29Q12.62-14.59 11.71-13.25Q10.79-11.92 10.02-11.11Q9.25-10.30 8.72-10.30L8.72-10.30Q8.09-10.30 7.88-11.53L7.88-11.53Q7.49-21.09 15.36-38.57L15.36-38.57L15.93-39.66Q16.21-40.25 16.47-40.87Q16.73-41.48 16.91-42.12Q17.09-42.75 17.09-43.28L17.09-43.28Q17.09-44.37 16.35-44.89Q15.61-45.42 14.59-45.42L14.59-45.42Q13.61-45.42 12.60-45.14Q11.60-44.86 10.69-44.37Q9.77-43.88 9-43.21Q8.23-42.54 7.70-41.73L7.70-41.73Q1.90-28.72 0.60-18.98Q-0.70-9.25-0.07-5.06L-0.07-5.06Q0.60-0.88 1.14 0.18Q1.69 1.23 2.57 1.86Q3.45 2.50 4.82 2.50L4.82 2.50Q6.57 2.50 8.10 1.42Q9.63 0.35 11.04-1.49Q12.45-3.34 13.83-5.80Q15.22-8.26 16.72-11.06Q18.21-13.85 19.92-16.84Q21.62-19.83 23.63-22.68L23.63-22.68Q22.75-20.14 22.39-17.23Q22.04-14.31 22.18-11.43Q22.32-8.54 22.94-5.87Q23.55-3.20 24.61-1.16Q25.66 0.88 27.16 2.11Q28.65 3.34 30.52 3.34L30.52 3.34Q31.82 3.34 33.28 2.69Q34.73 2.04 36.39 0.56L36.39 0.56Q37.86-0.77 39.38-2.92Q40.89-5.06 42.36-7.77Q43.84-10.48 45.26-13.61Q46.69-16.73 47.99-20.00Q49.29-23.27 50.45-26.56Q51.61-29.85 52.58-32.87Q53.54-35.89 54.26-38.53Q54.98-41.17 55.41-43.14L55.41-43.14Q55.58-43.84 55.76-44.74Q55.93-45.63 56.09-46.56Q56.25-47.50 56.36-48.39Q56.46-49.29 56.46-49.99L56.46-49.99Q56.46-51.15 56.18-52.14Q55.90-53.12 55.02-53.93L55.02-53.93Q54.60-54.35 53.98-54.77Q53.37-55.20 52.70-55.55Q52.03-55.90 51.33-56.11Q50.63-56.32 50.03-56.32L50.03-56.32Q48.90-56.32 48.23-55.81Q47.57-55.30 47.21-54.53Q46.86-53.75 46.76-52.80Q46.65-51.86 46.65-51.01L46.65-51.01Q46.65-50.27 46.69-49.54Q46.72-48.80 46.69-48.06L46.69-48.06Q46.58-45.21 45.97-41.87Q45.35-38.53 44.38-34.98Q43.42-31.43 42.17-27.83Q40.92-24.22 39.55-20.87Q38.18-17.51 36.77-14.57Q35.37-11.64 34.07-9.39Q32.77-7.14 31.64-5.75Q30.52-4.36 29.74-4.11L29.74-4.11Q29.04-4.54 28.79-5.98Q28.55-7.42 28.60-9.53Q28.65-11.64 28.97-14.27Q29.29-16.91 29.72-19.69Q30.16-22.46 30.64-25.24Q31.11-28.02 31.85-31.38Q32.59-34.73 31.54-36.54Q30.48-38.36 27.30-37.69Q24.12-37.02 22.11-33.29L22.11-33.29Q21.73-32.45 21.04-31.01Q20.36-29.57 19.51-27.77Q18.67-25.98 15.64-20.29Z"/></svg></g></g></svg> <defs><filter id="colors964683520"><feColorMatrix type="matrix" values="0 0 0 0 0.19921875  0 0 0 0 0.19921875  0 0 0 0 0.19921875  0 0 0 1 0" class="icon-fecolormatrix"/></filter> <filter id="colorsf1787270713"><feColorMatrix type="matrix" values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0" class="icon-fecolormatrix"/></filter> <filter id="colorsb5198793310"><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" class="icon-fecolormatrix"/></filter></defs></g><defs v-gra="od"/></svg>
+
+  <rect x="0" y="0" width="100%" height="100%" fill="transparent" fill-opacity="1"></rect>
+    <svg data-v-0dd9719b="" version="1.0" xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%"
+         viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"
+         color-interpolation-filters="sRGB" style="margin: auto;">
+      <rect data-v-0dd9719b="" x="0" y="0" width="100%" height="100%"
+            fill="#ffffff" fill-opacity="1" class="background" style="display: none;"/>
+      <rect data-v-0dd9719b="" x="0" y="0" width="100%" height="100%" style="display: none;"/>
+      <g data-v-0dd9719b="" fill="#333" class="iconsvg-imagesvg">
+        <rect fill="#333" fill-opacity="0" stroke-width="2" x="0" y="0" width="100" height="100" class="image-rect"/>
+        <svg viewBox="0 0 60 60" x="0" y="0" width="100" height="100" class="image-svg-svg bn" style="overflow: visible;">
+          <g hollow-target="">
+            <g>
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="overflow: visible;" width="60" height="60" x="0" y="0" filtersec="colorsb5198793310" filter="url(#h6cGSsXVJiJyhFL5YnHW_)">
+                <g transform="scale(1, 1) skewX(0)">
+                  <path d="M100 0v100H0V0h100zM90 10H10v80h80V10z" fill="#333"/>
+                </g>
+                <defs>
+                  <filter id="h6cGSsXVJiJyhFL5YnHW_"><feColorMatrix type="matrix" values="0 0 0 0 0.19921875  0 0 0 0 0.19921875  0 0 0 0 0.19921875  0 0 0 1 0"/></filter>
+                </defs>
+              </svg>
+            </g>
+          <g filter="url(#colors964683520)">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 70.8046875 73.72265625" width="45" height="45" x="7.5" y="7.5" class="image-svg-letter">
+              <path transform="translate(7.3125 63.3515625)" d="M28.86-44.89L28.86-44.89Q30.83-44.89 32.34-44.40Q33.86-43.91 34.98-43.08Q36.11-42.26 36.88-41.19Q37.65-40.11 38.14-38.95L38.14-38.95Q38.57-40.64 38.85-42.06Q39.13-43.49 39.30-44.89Q39.48-46.30 39.55-47.78Q39.62-49.25 39.62-51.01L39.62-51.01Q39.62-51.50 39.66-52.22Q39.69-52.95 39.80-53.79Q39.90-54.63 40.15-55.56Q40.39-56.50 40.82-57.45L40.82-57.45Q41.38-58.64 42.24-59.71Q43.10-60.79 44.26-61.59Q45.42-62.40 46.86-62.88Q48.30-63.35 50.03-63.35L50.03-63.35Q51.68-63.35 53.67-62.72Q55.65-62.09 57.50-60.89Q59.34-59.70 60.82-57.99Q62.30-56.29 62.93-54.11L62.93-54.11Q63.25-52.98 63.37-51.94Q63.49-50.91 63.49-49.99L63.49-49.99Q63.49-47.85 63.12-45.76Q62.75-43.66 62.26-41.55L62.26-41.55Q60.43-33.64 57.73-25.88Q55.02-18.11 51.68-10.69L51.68-10.69Q50.73-8.61 49.54-6.24Q48.34-3.87 46.88-1.53Q45.42 0.81 43.70 2.97Q41.98 5.13 39.94 6.77Q37.90 8.40 35.54 9.39Q33.19 10.37 30.52 10.37L30.52 10.37Q27.84 10.37 25.79 9.47Q23.73 8.58 22.20 7.21Q20.67 5.84 19.62 4.18Q18.56 2.53 17.89 1.05L17.89 1.05Q16.70 2.71 15.33 4.24Q13.96 5.77 12.36 6.94Q10.76 8.12 8.89 8.82Q7.03 9.53 4.82 9.53L4.82 9.53Q2.29 9.53 0.35 8.68Q-1.58 7.84-2.97 6.36Q-4.36 4.89-5.26 2.92Q-6.15 0.95-6.57-1.30L-6.57-1.30Q-6.93-3.09-7.12-4.87Q-7.31-6.64-7.31-8.47L-7.31-8.47Q-7.31-11.36-7.03-14.22Q-6.75-17.09-6.36-19.93L-6.36-19.93Q-5.63-25.38-4.06-30.46Q-2.50-35.54-0.56-40.25L-0.56-40.25Q-0.07-41.41 0.39-42.57Q0.84-43.73 1.41-44.86L1.41-44.86Q2.39-46.86 4.03-48.29Q5.66-49.71 7.54-50.64Q9.42-51.57 11.29-52.01Q13.15-52.45 14.59-52.45L14.59-52.45Q15.86-52.45 17.42-52.03Q18.98-51.61 20.41-50.63Q21.83-49.64 22.87-48.04Q23.91-46.44 24.08-44.09L24.08-44.09Q26.30-44.89 28.86-44.89ZM15.64-20.29L15.64-20.29Q12.62-14.59 11.71-13.25Q10.79-11.92 10.02-11.11Q9.25-10.30 8.72-10.30L8.72-10.30Q8.09-10.30 7.88-11.53L7.88-11.53Q7.49-21.09 15.36-38.57L15.36-38.57L15.93-39.66Q16.21-40.25 16.47-40.87Q16.73-41.48 16.91-42.12Q17.09-42.75 17.09-43.28L17.09-43.28Q17.09-44.37 16.35-44.89Q15.61-45.42 14.59-45.42L14.59-45.42Q13.61-45.42 12.60-45.14Q11.60-44.86 10.69-44.37Q9.77-43.88 9-43.21Q8.23-42.54 7.70-41.73L7.70-41.73Q1.90-28.72 0.60-18.98Q-0.70-9.25-0.07-5.06L-0.07-5.06Q0.60-0.88 1.14 0.18Q1.69 1.23 2.57 1.86Q3.45 2.50 4.82 2.50L4.82 2.50Q6.57 2.50 8.10 1.42Q9.63 0.35 11.04-1.49Q12.45-3.34 13.83-5.80Q15.22-8.26 16.72-11.06Q18.21-13.85 19.92-16.84Q21.62-19.83 23.63-22.68L23.63-22.68Q22.75-20.14 22.39-17.23Q22.04-14.31 22.18-11.43Q22.32-8.54 22.94-5.87Q23.55-3.20 24.61-1.16Q25.66 0.88 27.16 2.11Q28.65 3.34 30.52 3.34L30.52 3.34Q31.82 3.34 33.28 2.69Q34.73 2.04 36.39 0.56L36.39 0.56Q37.86-0.77 39.38-2.92Q40.89-5.06 42.36-7.77Q43.84-10.48 45.26-13.61Q46.69-16.73 47.99-20.00Q49.29-23.27 50.45-26.56Q51.61-29.85 52.58-32.87Q53.54-35.89 54.26-38.53Q54.98-41.17 55.41-43.14L55.41-43.14Q55.58-43.84 55.76-44.74Q55.93-45.63 56.09-46.56Q56.25-47.50 56.36-48.39Q56.46-49.29 56.46-49.99L56.46-49.99Q56.46-51.15 56.18-52.14Q55.90-53.12 55.02-53.93L55.02-53.93Q54.60-54.35 53.98-54.77Q53.37-55.20 52.70-55.55Q52.03-55.90 51.33-56.11Q50.63-56.32 50.03-56.32L50.03-56.32Q48.90-56.32 48.23-55.81Q47.57-55.30 47.21-54.53Q46.86-53.75 46.76-52.80Q46.65-51.86 46.65-51.01L46.65-51.01Q46.65-50.27 46.69-49.54Q46.72-48.80 46.69-48.06L46.69-48.06Q46.58-45.21 45.97-41.87Q45.35-38.53 44.38-34.98Q43.42-31.43 42.17-27.83Q40.92-24.22 39.55-20.87Q38.18-17.51 36.77-14.57Q35.37-11.64 34.07-9.39Q32.77-7.14 31.64-5.75Q30.52-4.36 29.74-4.11L29.74-4.11Q29.04-4.54 28.79-5.98Q28.55-7.42 28.60-9.53Q28.65-11.64 28.97-14.27Q29.29-16.91 29.72-19.69Q30.16-22.46 30.64-25.24Q31.11-28.02 31.85-31.38Q32.59-34.73 31.54-36.54Q30.48-38.36 27.30-37.69Q24.12-37.02 22.11-33.29L22.11-33.29Q21.73-32.45 21.04-31.01Q20.36-29.57 19.51-27.77Q18.67-25.98 15.64-20.29Z"/>
+            </svg>
+          </g>
+        </g>
+      </svg>
+      <defs>
+        <filter id="colors964683520">
+          <feColorMatrix type="matrix" values="0 0 0 0 0.19921875  0 0 0 0 0.19921875  0 0 0 0 0.19921875  0 0 0 1 0" class="icon-fecolormatrix"/>
+        </filter>
+        <filter id="colorsf1787270713">
+          <feColorMatrix type="matrix" values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0" class="icon-fecolormatrix"/>
+        </filter>
+        <filter id="colorsb5198793310">
+          <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" class="icon-fecolormatrix"/>
+        </filter>
+      </defs>
+    </g>
+    <defs v-gra="od"/>
   </svg>
+</svg>
