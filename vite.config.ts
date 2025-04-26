@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import { checker } from "vite-plugin-checker";
 import { VitePWA } from 'vite-plugin-pwa';
+import basicSsl from '@vitejs/plugin-basic-ssl';
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
@@ -11,6 +12,7 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [
+    basicSsl(),
     react(),
     checker({ typescript: true }),
     VitePWA({
