@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { checker } from "vite-plugin-checker";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
@@ -10,6 +11,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
+    checker({ typescript: true })
   ].filter(Boolean),
   resolve: {
     alias: {

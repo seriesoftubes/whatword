@@ -1,8 +1,7 @@
-
 import React, { useState, useRef } from "react";
-import { WORDS } from "../words";
-import { WordleBoard } from "../components/WordleBoard";
-import { WordleKeyboard } from "../components/WordleKeyboard";
+import { WORDS } from "@/words";
+import { WordleBoard } from "@/components/WordleBoard";
+import { WordleKeyboard } from "@/components/WordleKeyboard";
 import { LetterPresence, GameStatus } from "@/lib/types";
 
 
@@ -101,7 +100,7 @@ const Index: React.FC = () => {
       });
       idx++;
       if (idx < WORD_LENGTH) {
-        revealTimeout.current = setTimeout(revealNext, 0);
+        revealTimeout.current = window.setTimeout(revealNext, 0);
       } else {
         // After full reveal, update keyboardStatus
         setKeyboardStatus((prev) => {

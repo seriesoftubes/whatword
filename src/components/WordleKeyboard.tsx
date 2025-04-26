@@ -3,22 +3,26 @@ import { cn } from "@/lib/utils";
 import { LetterPresence } from '@/lib/types'
 
 
-const KEY_ROWS = [
+type Key = ("BACK" | "ENTER" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" |
+           "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" |
+           "T" | "U" | "V" | "W" | "X" | "Y" | "Z");
+
+const KEY_ROWS: Array<Array<Key>> = [
   ["Q","W","E","R","T","Y","U","I","O","P"],
   ["A","S","D","F","G","H","J","K","L"],
   ["BACK","Z","X","C","V","B","N","M","ENTER"]
 ];
 
-const KEY_WIDTHS = {
-  'ENTER': 75,
-  'BACK': 33,
-};
+const KEY_WIDTHS: Map<Key, number> = new Map([
+  ['ENTER', 75],
+  ['BACK', 33],
+]);
 
-const BACKGROUND_BY_PRESENCE: { [key: LetterPresence]: string } = {
-  "correct": "bg-wordle-correct text-white",
-  "present": "bg-wordle-present",
-  "absent": "bg-wordle-absent text-gray-400"
-};
+const BACKGROUNDS: Map<LetterPresence, string> = new Map([
+  ["correct", "bg-wordle-correct text-white"],
+  ["present", "bg-wordle-present"],
+  ["absent", "bg-wordle-absent text-gray-400"]
+]);
 
 type KeyStatus = Record<string, LetterPresence | undefined>;
 
@@ -35,12 +39,12 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
         {row.map((key) => {
           const status = keyStatus[key];
           let backgroundClass = "bg-wordle-key";
-          if (status in BACKGROUND_BY_PRESENCE) {
-            backgroundClass = BACKGROUND_BY_PRESENCE[status];
+          if (status && BACKGROUNDS.has(status)) {
+            backgroundClass = BACKGROUNDS.get(status)!;
           } else if (key === "ENTER" || key === "BACK") {
             backgroundClass = "bg-wordle-accent text-white";
           }
-          const width = KEY_WIDTHS[key] || 30;
+          const width = KEY_WIDTHS.get(key) || 30;
 
           return (
             <button

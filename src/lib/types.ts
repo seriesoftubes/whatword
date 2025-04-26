@@ -1,5 +1,7 @@
+/** Common types. */
 
 /** The presence of a letter. */
-type LetterPresence = 'correct' | 'present' | 'absent';
+export type LetterPresence = 'correct' | 'present' | 'absent';
 
-type GameStatus = "playing" | "won" | "lost";
+/** The status of the game. */
+export type GameStatus = "playing" | "won" | "lost";
