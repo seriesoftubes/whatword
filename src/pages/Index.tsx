@@ -183,7 +183,7 @@ const Index: React.FC = () => {
   // Compute display: up to NUM_TURNS rows + current attempt
   return (
     <main className="min-h-screen flex flex-col items-center justify-start gap-6"
-      style={{ background: "linear-gradient(120deg, #E5DEFF 0%, #F1F0FB 100%)", fontFamily: "Inter, system-ui,sans-serif" }}>
+      style={{ background: "linear-gradient(0deg, rgb(190, 173, 255) 0%, rgb(241, 240, 251) 100%)", fontFamily: "Inter, system-ui,sans-serif" }}>
       <div className="w-full py-3 md:py-6 text-center">
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-0 text-wordle-correct drop-shadow-sm">Wordle</h1>
       </div>
