@@ -4022,5 +4022,6 @@ export const WORDS = new Set( [
   "FUCKS",
   "CHUGS",
   "FLUBS",
-  "RESOD"
+  "RESOD",
+  "NERDY"
 ] );
