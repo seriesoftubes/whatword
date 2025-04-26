@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn, blurEverything } from "@/lib/utils";
 import { LetterPresence } from '@/lib/types'
 
 
@@ -55,8 +55,8 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
                 "active:scale-50"
               )}
               style={{ minWidth: width }}
-              onClick={(event) => {
-                  event.currentTarget.blur();
+              onClick={() => {
+                  blurEverything();
                   onKey(key);
                 }
               }

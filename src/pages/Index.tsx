@@ -3,7 +3,7 @@ import { WORDS } from "@/words";
 import { WordleBoard } from "@/components/WordleBoard";
 import { WordleKeyboard } from "@/components/WordleKeyboard";
 import { LetterPresence, GameStatus } from "@/lib/types";
-
+import { blurEverything } from "@/lib/utils";
 
 function getStatusForGuess(guess: string, answer: string): LetterPresence[] {
   const res: LetterPresence[] = Array(5).fill('absent');
@@ -152,6 +152,7 @@ const Index: React.FC = () => {
   React.useEffect(() => {
     // HW keyboard support
     const onKeyDown = (e: KeyboardEvent) => {
+      blurEverything();
       if (gameStatus !== "playing") {
         return;
       }
