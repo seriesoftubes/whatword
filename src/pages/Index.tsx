@@ -67,7 +67,7 @@ const Index: React.FC = () => {
   const [turn, setTurn] = useState<number>(0);
   const [keyboardStatus, setKeyboardStatus] = useState<KeyboardStatus>({});
   const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
-  const revealTimeout = useRef<any>(null);
+  const revealTimeout = useRef<number>(0);
 
   // Focus input for hardware keyboard (optional; not critical for iOS)
   const inputRef = useRef<HTMLInputElement>(null);
