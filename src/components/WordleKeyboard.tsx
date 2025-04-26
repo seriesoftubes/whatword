@@ -55,7 +55,11 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
                 "active:scale-50"
               )}
               style={{ minWidth: width }}
-              onClick={() => onKey(key)}
+              onClick={(event) => {
+                  event.currentTarget.blur();
+                  onKey(key);
+                }
+              }
               aria-label={key}
               tabIndex={-1}>
               {key === "BACK" ? "⌫" : key}
