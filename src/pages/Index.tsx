@@ -190,7 +190,7 @@ const Index: React.FC = () => {
       <div className="mb-2" style={{ minHeight: 348 }}>
         <WordleBoard guesses={guesses} currentGuess={currentGuess} turn={turn} />
         {(gameStatus === "won" || gameStatus === "lost") && (
-          <div className="my-4 flex flex-col items-center">
+          <div className="mt-4 flex flex-col items-center">
             <span className="text-lg md:text-xl font-semibold text-wordle-correct mb-2 animate-bounce">
               {gameStatus === "won" ? "🎉 Correct!!" : `The word was: ${answer}`}
             </span>
