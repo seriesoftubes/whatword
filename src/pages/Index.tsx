@@ -186,10 +186,10 @@ const Index: React.FC = () => {
   return (
     <main className="min-h-screen flex flex-col items-center justify-start gap-6"
       style={{ background: "linear-gradient(0deg, rgb(190, 173, 255) 0%, rgb(241, 240, 251) 100%)", fontFamily: "Inter, system-ui,sans-serif" }}>
-      <div className="w-full py-3 md:py-6 text-center">
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-0 text-wordle-correct drop-shadow-sm">Wordle</h1>
+      <div className="w-full py-2 text-center">
+        <h1 className="text-3xl font-bold tracking-tight mb-0 text-wordle-correct drop-shadow-sm">Wordle</h1>
       </div>
-      <div className="mb-2" style={{ minHeight: 348 }}>
+      <div className="mb-1" style={{ minHeight: 348 }}>
         <WordleBoard guesses={guesses} currentGuess={currentGuess} turn={turn} />
         {(gameStatus === "won" || gameStatus === "lost") && (
           <div className="mt-4 flex flex-col items-center">

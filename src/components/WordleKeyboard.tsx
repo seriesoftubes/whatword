@@ -10,12 +10,13 @@ export type Key = ("BACK" | "ENTER" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | 
 const KEY_ROWS: Array<Array<Key>> = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
   ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-  ["BACK", "Z", "X", "C", "V", "B", "N", "M", "ENTER"]
+  [ "Z", "X", "C", "V", "B", "N", "M", "BACK"],
+  ["ENTER"]
 ];
 
 const KEY_WIDTHS: Map<Key, number> = new Map([
   ['ENTER', 75],
-  ['BACK', 33],
+  ['BACK', 75],
 ]);
 
 const BACKGROUNDS: Map<LetterPresence, string> = new Map([
@@ -50,23 +51,23 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
   return (
     <div className="flex flex-col gap-2 px-12 w-full max-w-md mx-auto select-none">
       {KEY_ROWS.map((row, ri) => (
-        <div key={ri} className="flex justify-center gap-1">
+        <div key={ri} className="flex justify-center gap-1.5">
           {row.map((key) => {
             const backgroundClass = getBackgroundClass(key);
-            const width = KEY_WIDTHS.get(key) || 30;
+            const width = KEY_WIDTHS.get(key) || 32;
             return (
               <button
                 key={key}
                 className={cn(
-                  "flex-1 px-1 py-2 md:py-3 md:px-2 rounded-md md:rounded-lg font-semibold text-base md:text-lg transition-all duration-200",
+                  "flex-1 px-1 py-2 md:py-3 md:px-2 rounded-md md:rounded-lg font-semibold text-base transition-all duration-200",
                   backgroundClass,
                   "active:scale-50"
                 )}
-                style={{ minWidth: width }}
+                style={{ minWidth: width, maxWidth: 150 }}
                 onClick={ () => onClickKey(key) }
                 aria-label={key}
                 tabIndex={-1}>
-                {key === "BACK" ? "⌫" : key}
+                {key === "BACK" ? "DEL ⌫" : key}
               </button>
             );
           })}
