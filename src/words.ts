@@ -3810,7 +3810,7 @@ export const WORDS = new Set( [
   "QUAKY",
   "QUAGS",
   "QUAFF",
-  "OKAYS"
+  "OKAYS",
   "OGLED",
   "OGLER",
   "OGLES",
@@ -3828,7 +3828,7 @@ export const WORDS = new Set( [
   "LADED",
   "KOOKY",
   "KIDDO",
-  "KEMPT"
+  "KEMPT",
   "JANKY",
   "JAPED",
   "JAPER",

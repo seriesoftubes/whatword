@@ -11,6 +11,9 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  test: {
+    include: ['src/**/*test.ts'],
+  },
   plugins: [
     basicSsl({
       name: 'seriesoftubes',
