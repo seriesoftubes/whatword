@@ -12,17 +12,31 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [
-    basicSsl(),
+    basicSsl({
+      name: 'seriesoftubes',
+      domains: ['seriesoftubes.github.io'],
+      certDir: './certs',
+    }),
     react(),
     checker({ typescript: true }),
     VitePWA({
+      strategies: 'generateSW',
+      injectRegister: false,
+      devOptions: {
+        enabled: true,
+        navigateFallback: 'index.html',
+        suppressWarnings: true,
+        type: 'module'
+      },
       workbox: {
         globDirectory: 'dist/',
-        globPatterns: [
-          '**/*.{js,css,html,ico,png,svg}',
-        ],
+        globPatterns: ["**/*"],
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
         swDest: 'dist/sw.js',
+        navigateFallback: 'index.html'
       },
+      includeAssets: ["**/*"],
       // Updates the SW whenever a new one is detected
       registerType: 'autoUpdate',
       manifest: {

@@ -1,14 +1,14 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "wordle",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --debug",
     "build": "tsc && vite build",
-    "build:dev": "vite build --mode development",
+    "build:dev": "tsc && vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --debug"
   },
   "dependencies": {
     "clsx": "^2.1.1",
