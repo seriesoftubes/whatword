@@ -19,6 +19,11 @@ const KEY_WIDTHS: Map<Key, number> = new Map([
   ['BACK', 75],
 ]);
 
+const KEY_PATTERNS: Map<Key, string> = new Map([
+  ["ENTER", "ENTER ↵"],
+  ["BACK", "DEL ⌫"],
+]);
+
 const BACKGROUNDS: Map<LetterPresence, string> = new Map([
   ["correct", "bg-wordle-correct text-white"],
   ["present", "bg-wordle-present"],
@@ -55,6 +60,7 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
           {row.map((key) => {
             const backgroundClass = getBackgroundClass(key);
             const width = KEY_WIDTHS.get(key) || 32;
+            const pattern = KEY_PATTERNS.get(key) || key;
             return (
               <button
                 key={key}
@@ -67,7 +73,7 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
                 onClick={ () => onClickKey(key) }
                 aria-label={key}
                 tabIndex={-1}>
-                {key === "BACK" ? "DEL ⌫" : key}
+                {pattern}
               </button>
             );
           })}
