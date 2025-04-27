@@ -1,9 +1,10 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useCallback, useState, useRef } from "react";
 import { WORDS } from "@/words";
-import { WordleBoard } from "@/components/WordleBoard";
-import { WordleKeyboard, Key } from "@/components/WordleKeyboard";
-import { LetterPresence, GameStatus } from "@/lib/types";
-import { blurEverything } from "@/lib/utils";
+import { GuessesBoard } from "@/components/GuessesBoard";
+import { Keyboard } from "@/components/Keyboard";
+import { type GameStatus, type GuessedLetter, type LetterPresence, type Key, type KeyPresences } from "@/lib/types";
+import { blurEverything, NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
+
 
 function getStatusForGuess(guess: string, answer: string): LetterPresence[] {
   const res: LetterPresence[] = Array(5).fill('absent');
@@ -46,25 +47,12 @@ function pickRandomWord(): string {
   throw new Error("unreachable");
 }
 
-interface LetterState {
-  value: string;
-  status?: LetterPresence;
-  reveal: boolean;
-}
-
-interface KeyboardStatus {
-  [key: string]: LetterPresence | undefined;
-}
-
-const NUM_TURNS = 6;
-const WORD_LENGTH = 5;
-
 const Index: React.FC = () => {
   const [answer, setAnswer] = useState<string>(() => pickRandomWord());
-  const [guesses, setGuesses] = useState<LetterState[][]>([]);
+  const [guesses, setGuesses] = useState<GuessedLetter[][]>([]);
   const [currentGuess, setCurrentGuess] = useState<string>("");
   const [turn, setTurn] = useState<number>(0);
-  const [keyboardStatus, setKeyboardStatus] = useState<KeyboardStatus>({});
+  const [keyboardStatus, setKeyboardStatus] = useState<KeyPresences>({} as KeyPresences);
   const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
   const revealTimeout = useRef<number>(0);
 
@@ -79,7 +67,7 @@ const Index: React.FC = () => {
     }
     const statuses = getStatusForGuess(currentGuess, answer);
 
-    let revealed: LetterState[] = [];
+    let revealed: GuessedLetter[] = [];
     statuses.forEach((status, i) => {
       revealed.push({
         value: currentGuess[i],
@@ -106,7 +94,7 @@ const Index: React.FC = () => {
         setKeyboardStatus((prev) => {
           const copy = { ...prev };
           for (let k = 0; k < WORD_LENGTH; ++k) {
-            const letter = currentGuess[k];
+            const letter = currentGuess[k] as Key;
             const st = statuses[k];
             const copyL = copy[letter];
             if (copyL === "correct" || (copyL === "present" && st === "absent")) {
@@ -175,7 +163,7 @@ const Index: React.FC = () => {
     setGuesses([]);
     setCurrentGuess("");
     setTurn(0);
-    setKeyboardStatus({});
+    setKeyboardStatus({} as KeyPresences);
     setGameStatus("playing");
     if (revealTimeout.current) {
       clearTimeout(revealTimeout.current);
@@ -190,7 +178,7 @@ const Index: React.FC = () => {
         <h1 className="text-3xl font-bold tracking-tight mb-0 text-wordle-correct drop-shadow-sm">Wordle</h1>
       </div>
       <div className="mb-1" style={{ minHeight: 348 }}>
-        <WordleBoard guesses={guesses} currentGuess={currentGuess} turn={turn} />
+        <GuessesBoard guesses={guesses} currentGuess={currentGuess} turn={turn} />
         {(gameStatus === "won" || gameStatus === "lost") && (
           <div className="mt-4 flex flex-col items-center">
             <span className="text-lg md:text-xl font-semibold text-wordle-correct mb-2 animate-bounce">
@@ -202,7 +190,7 @@ const Index: React.FC = () => {
           </div>
         )}
       </div>
-      <WordleKeyboard onKey={cachedHandleKey} keyStatus={keyboardStatus} />
+      <Keyboard onKey={cachedHandleKey} keyStatus={keyboardStatus} />
       <div className="mt-8 mb-2 text-sm text-gray-400 max-w-[340px] text-center"></div>
       <input ref={inputRef} style={{ position: "absolute", left: -1000, top: -1000 }} tabIndex={-1} readOnly aria-hidden />
     </main>

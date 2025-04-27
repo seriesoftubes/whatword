@@ -1,11 +1,7 @@
 import React from "react";
-import { cn, blurEverything } from "@/lib/utils";
-import { LetterPresence } from '@/lib/types'
+import { combineCssClasses, blurEverything } from "@/lib/utils";
+import { type LetterPresence, type Key, type KeyPresences } from '@/lib/types';
 
-
-export type Key = ("BACK" | "ENTER" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" |
-  "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" |
-  "T" | "U" | "V" | "W" | "X" | "Y" | "Z");
 
 const KEY_ROWS: Array<Array<Key>> = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
@@ -30,15 +26,15 @@ const BACKGROUNDS: Map<LetterPresence, string> = new Map([
   ["absent", "bg-wordle-absent text-gray-400"]
 ]);
 
-type KeyStatus = Record<string, LetterPresence | undefined>;
 
-interface WordleKeyboardProps {
+interface KeyboardProps {
   onKey: (key: Key) => void;
-  keyStatus: KeyStatus;
+  keyStatus: KeyPresences;
 }
 
 
-export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus }) => {
+/** Component that renders the keyboard for entering guesses. */
+export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyStatus }) => {
   const onClickKey = (key: Key) => {
     blurEverything();
     onKey(key);
@@ -64,7 +60,7 @@ export const WordleKeyboard: React.FC<WordleKeyboardProps> = ({ onKey, keyStatus
             return (
               <button
                 key={key}
-                className={cn(
+                className={combineCssClasses(
                   "flex-1 px-1 py-2 md:py-3 md:px-2 rounded-md md:rounded-lg font-semibold text-base transition-all duration-200",
                   backgroundClass,
                   "active:scale-50"
