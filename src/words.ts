@@ -1200,18 +1200,14 @@ export const WORDS = new Set( [
   "STEIN",
   "CRUST",
   "MOIST",
-  "DIANA",
   "CLUES",
   "FIBRE",
   "FERRY",
-  "JASON",
   "IONIC",
   "POOLS",
   "DANTE",
   "IVORY",
   "WIPED",
-  "PEDRO",
-  "HENRI",
   "BELLS",
   "SINUS",
   "FETUS",
@@ -4023,5 +4019,7 @@ export const WORDS = new Set( [
   "CHUGS",
   "FLUBS",
   "RESOD",
-  "NERDY"
+  "NERDY",
+  "BIPED",
+  "SLURP"
 ] );
