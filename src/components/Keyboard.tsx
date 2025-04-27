@@ -26,23 +26,21 @@ const BACKGROUNDS: Map<LetterPresence, string> = new Map([
   ["absent", "bg-wordle-absent text-gray-400"]
 ]);
 
-
 interface KeyboardProps {
   onKey: (key: Key) => void;
-  keyStatus: KeyPresences;
+  keyPresences: KeyPresences;
 }
 
-
 /** Component that renders the keyboard for entering guesses. */
-export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyStatus }) => {
+export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences }) => {
   const onClickKey = (key: Key) => {
     blurEverything();
     onKey(key);
   };
   const getBackgroundClass = (key: Key) => {
-    const status = keyStatus[key];
-    if (status && BACKGROUNDS.has(status)) {
-      return BACKGROUNDS.get(status)!;
+    const pres = keyPresences[key];
+    if (pres && BACKGROUNDS.has(pres)) {
+      return BACKGROUNDS.get(pres)!;
     } else if (key === "ENTER" || key === "BACK") {
       return "bg-wordle-accent text-white";
     }

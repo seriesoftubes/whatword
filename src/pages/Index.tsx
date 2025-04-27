@@ -6,19 +6,19 @@ import { type GameStatus, type GuessedLetter, type LetterPresence, type Key, typ
 import { blurEverything, NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
 
 
-function getStatusForGuess(guess: string, answer: string): LetterPresence[] {
-  const res: LetterPresence[] = Array(5).fill('absent');
+function getLetterPresences(guess: string, answer: string): LetterPresence[] {
   const answerCounts: Record<string, number> = {};
   for (let i = 0; i < 5; i++) {
     const letter = answer[i];
     answerCounts[letter] = (answerCounts[letter] || 0) + 1;
   }
+  const out: LetterPresence[] = Array(5).fill('absent');
   // Calculate the "correct" slots.
   for (let i = 0; i < 5; i++) {
     const guessLetter = guess[i];
     const answerLetter = answer[i];
     if (guessLetter === answerLetter) {
-      res[i] = "correct";
+      out[i] = "correct";
       answerCounts[guessLetter]--;
     }
   }
@@ -27,11 +27,11 @@ function getStatusForGuess(guess: string, answer: string): LetterPresence[] {
     const guessLetter = guess[i];
     const answerLetter = answer[i];
     if (guessLetter !== answerLetter && answerCounts[guessLetter] > 0) {
-      res[i] = "present";
+      out[i] = "present";
       answerCounts[guessLetter]--;
     }
   }
-  return res;
+  return out;
 }
 
 function pickRandomWord(): string {
@@ -52,69 +52,51 @@ const Index: React.FC = () => {
   const [guesses, setGuesses] = useState<GuessedLetter[][]>([]);
   const [currentGuess, setCurrentGuess] = useState<string>("");
   const [turn, setTurn] = useState<number>(0);
-  const [keyboardStatus, setKeyboardStatus] = useState<KeyPresences>({} as KeyPresences);
+  const [keyPresences, setKeyPresences] = useState<KeyPresences>({} as KeyPresences);
   const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
-  const revealTimeout = useRef<number>(0);
 
   // Focus input for hardware keyboard (optional; not critical for iOS)
   const inputRef = useRef<HTMLInputElement>(null);
 
   const _submitGuess = () => {
-    if (currentGuess.length !== WORD_LENGTH) return;
+    if (currentGuess.length !== WORD_LENGTH) {
+      // TODO: shaking animation here.
+      return;
+    }
     if (!WORDS.has(currentGuess)) {
+      // TODO: shaking animation here.
       window.alert("Not in word list.");
       return;
     }
-    const statuses = getStatusForGuess(currentGuess, answer);
 
-    let revealed: GuessedLetter[] = [];
-    statuses.forEach((status, i) => {
-      revealed.push({
-        value: currentGuess[i],
-        status,
-        reveal: false
-      });
+    const presences = getLetterPresences(currentGuess, answer);
+    const revealed: GuessedLetter[] = presences.map((status, i) => {
+      return {value: currentGuess[i], status, reveal: true};
     });
-    // Poorly written reveal animation, one letter at a time supposedly.
-    let idx = 0;
-    function revealNext() {
-      revealed = revealed.map((l, j) =>
-        j === idx ? { ...l, reveal: true } : l
-      );
-      setGuesses((prev) => {
-        const out = [...prev];
-        out[out.length - 1] = revealed;
-        return out;
-      });
-      idx++;
-      if (idx < WORD_LENGTH) {
-        revealTimeout.current = window.setTimeout(revealNext, 0);
-      } else {
-        // After full reveal, update keyboardStatus
-        setKeyboardStatus((prev) => {
-          const copy = { ...prev };
-          for (let k = 0; k < WORD_LENGTH; ++k) {
-            const letter = currentGuess[k] as Key;
-            const st = statuses[k];
-            const copyL = copy[letter];
-            if (copyL === "correct" || (copyL === "present" && st === "absent")) {
-              continue;
-            }
-            copy[letter] = st;
-          }
-          return copy;
-        });
-        if (currentGuess === answer) {
-          setGameStatus("won");
-        } else if (turn + 1 === NUM_TURNS) {
-          setGameStatus("lost");
-        }
-        setTurn((prev) => prev + 1);
-        setCurrentGuess("");
-      }
-    }
     setGuesses((prev) => [...prev, revealed]);
-    revealNext();
+
+    setKeyPresences((prev) => {
+      const copy = { ...prev };
+      for (let i = 0; i < WORD_LENGTH; i++) {
+        const letter = currentGuess[i] as Key;
+        const newPres = presences[i];
+        const oldPres = prev[letter];
+        if (oldPres === "correct" || (oldPres === "present" && newPres === "absent")) {
+          continue;
+        }
+        copy[letter] = newPres;
+      }
+      return copy;
+    });
+
+    if (currentGuess === answer) {
+      setGameStatus("won");
+    } else if (turn + 1 === NUM_TURNS) {
+      setGameStatus("lost");
+    }
+
+    setTurn((prev) => prev + 1);
+    setCurrentGuess("");
   };
   const cachedSubmitGuess = useCallback(_submitGuess, [turn, currentGuess, answer]);
 
@@ -163,11 +145,8 @@ const Index: React.FC = () => {
     setGuesses([]);
     setCurrentGuess("");
     setTurn(0);
-    setKeyboardStatus({} as KeyPresences);
+    setKeyPresences({} as KeyPresences);
     setGameStatus("playing");
-    if (revealTimeout.current) {
-      clearTimeout(revealTimeout.current);
-    }
   };
 
   // Compute display: up to NUM_TURNS rows + current attempt
@@ -190,7 +169,7 @@ const Index: React.FC = () => {
           </div>
         )}
       </div>
-      <Keyboard onKey={cachedHandleKey} keyStatus={keyboardStatus} />
+      <Keyboard onKey={cachedHandleKey} keyPresences={keyPresences} />
       <div className="mt-8 mb-2 text-sm text-gray-400 max-w-[340px] text-center"></div>
       <input ref={inputRef} style={{ position: "absolute", left: -1000, top: -1000 }} tabIndex={-1} readOnly aria-hidden />
     </main>
