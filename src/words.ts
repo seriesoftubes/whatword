@@ -3783,4 +3783,5 @@ export const WORDS = new Set( [
   "RANDY",
   "EVENS",
   "LEGGY",
+  "SLUTS"
 ] );
