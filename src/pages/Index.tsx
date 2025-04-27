@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { WORDS } from "@/words";
 import { WordleBoard } from "@/components/WordleBoard";
 import { WordleKeyboard, Key } from "@/components/WordleKeyboard";
@@ -71,7 +71,7 @@ const Index: React.FC = () => {
   // Focus input for hardware keyboard (optional; not critical for iOS)
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const submitGuess = () => {
+  const _submitGuess = () => {
     if (currentGuess.length !== WORD_LENGTH) return;
     if (!WORDS.has(currentGuess)) {
       window.alert("Not in word list.");
@@ -128,14 +128,15 @@ const Index: React.FC = () => {
     setGuesses((prev) => [...prev, revealed]);
     revealNext();
   };
+  const cachedSubmitGuess = useCallback(_submitGuess, [turn, currentGuess, answer]);
 
   // Keyboard input handler
-  const handleKey = (key: Key) => {
+  const _handleKey = (key: Key) => {
     if (gameStatus !== "playing") return;
 
     if (key === "ENTER") {
       if (currentGuess.length === WORD_LENGTH) {
-        submitGuess();
+        cachedSubmitGuess();
       }
     } else if (key === "BACK") {
       setCurrentGuess((prev) => prev.slice(0, -1));
@@ -147,6 +148,7 @@ const Index: React.FC = () => {
       throw new Error("unrecognized key: " + key);
     }
   };
+  const cachedHandleKey = useCallback(_handleKey, [currentGuess, gameStatus, cachedSubmitGuess]);
 
   React.useEffect(() => {
     // HW keyboard support
@@ -156,17 +158,17 @@ const Index: React.FC = () => {
         return;
       }
       if (e.key === "Enter") {
-        handleKey("ENTER");
+        cachedHandleKey("ENTER");
       }
       else if (e.key === "Backspace") {
-        handleKey("BACK");
+        cachedHandleKey("BACK");
       } else if (e.key.length === 1 && /^[a-zA-Z]$/.test(e.key)) {
-        handleKey(e.key.toUpperCase() as Key);
+        cachedHandleKey(e.key.toUpperCase() as Key);
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [currentGuess, gameStatus, turn]);
+  }, [currentGuess, gameStatus, turn, cachedHandleKey]);
 
   const handleRestart = () => {
     setAnswer(pickRandomWord());
@@ -200,7 +202,7 @@ const Index: React.FC = () => {
           </div>
         )}
       </div>
-      <WordleKeyboard onKey={handleKey} keyStatus={keyboardStatus} />
+      <WordleKeyboard onKey={cachedHandleKey} keyStatus={keyboardStatus} />
       <div className="mt-8 mb-2 text-sm text-gray-400 max-w-[340px] text-center"></div>
       <input ref={inputRef} style={{ position: "absolute", left: -1000, top: -1000 }} tabIndex={-1} readOnly aria-hidden />
     </main>
