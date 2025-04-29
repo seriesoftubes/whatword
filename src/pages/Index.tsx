@@ -3,7 +3,7 @@ import { WORDS } from "@/words";
 import { GuessesBoard } from "@/components/GuessesBoard";
 import { Keyboard } from "@/components/Keyboard";
 import { type GameStatus, type GuessedLetter, type LetterPresence, type Key, type KeyPresences } from "@/lib/types";
-import { blurEverything, NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
+import { blurEverything, comparePresence, NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
 
 
 function getLetterPresences(guess: string, answer: string): LetterPresence[] {
@@ -75,16 +75,24 @@ const Index: React.FC = () => {
     });
     setGuesses((prev) => [...prev, revealed]);
 
+    // Sets the overall presence of each key. This determines the Keyboard's
+    // background colors for its keys.
     setKeyPresences((prev) => {
       const copy = { ...prev };
       for (let i = 0; i < WORD_LENGTH; i++) {
         const letter = currentGuess[i] as Key;
         const newPres = presences[i];
         const oldPres = prev[letter];
-        if (oldPres === "correct" || (oldPres === "present" && newPres === "absent")) {
+        if (oldPres === "correct") {
+          continue;
+        } else if (oldPres === "present" && newPres === "absent") {
           continue;
         }
-        copy[letter] = newPres;
+        const storedPres = copy[letter];
+        if (!storedPres || comparePresence(storedPres, newPres) === 1) {
+          // The `=== 1` means newPres is better than the stored presence.
+          copy[letter] = newPres;
+        }
       }
       return copy;
     });

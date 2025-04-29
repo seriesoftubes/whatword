@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+import { type LetterPresence } from './types';
 
 /**
  * Maximum number of times you can guess a word.
@@ -20,11 +21,23 @@ export function combineCssClasses(...inputs: ClassValue[]) {
 }
 
 /** If any element is focused, this blurs it. */
-export function blurEverything() {
+export function blurEverything(): void {
   // Try to avoid weird edge cases where there's an interaction b/n hardware
   // keyboard and virtual keyboard.
   const element = document.activeElement;
   if (element !== document.body && element instanceof HTMLElement) {
     element.blur();
   }
+}
+
+/** Compare a to b.  If a > b, returns -1; same is 0; b > a is +1. */
+export function comparePresence(a: LetterPresence, b: LetterPresence): number {
+  if (a === b) return 0;
+  // Below here, a and b are different.
+  if (a === 'correct') return -1;
+  if (b === 'correct') return 1;
+  // Below here, neither are correct, so both are present/absent.
+  if (a === 'present') return -1;
+  if (b === 'present') return 1;
+  throw new Error('unreachable');
 }

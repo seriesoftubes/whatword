@@ -1,7 +1,11 @@
 /** Common types. */
 
+
+/** Valid values for LetterPresence. */
+export const LetterPresenceValues = ['correct', 'present', 'absent'] as const;
+
 /** The presence of a letter. */
-export type LetterPresence = 'correct' | 'present' | 'absent';
+export type LetterPresence = typeof LetterPresenceValues[number];
 
 /** The status of the game. */
 export type GameStatus = "playing" | "won" | "lost";
