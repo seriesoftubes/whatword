@@ -3998,5 +3998,11 @@ export const WORDS = new Set( [
   "PIPPY",
   "RENDS",
   "REBUS",
-  "REBUY"
+  "REBUY",
+  "BOSKY",
+  "TASED",
+  "TASES",
+  "TULES",
+  "PUKED",
+  "DASHY"
 ] );

@@ -16,3 +16,9 @@ test('every word is all caps', () => {
   }
 });
 
+test('every word only contains a-z', () => {
+  const re = /[A-Z]{5}/;
+  for (const word of WORDS) {
+    expect(re.test(word), `expected word "${word}" to have A-Z`).toBe(true);
+  }
+});
