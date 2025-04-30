@@ -1647,7 +1647,6 @@ export const WORDS = new Set( [
   "WISER",
   "CLING",
   "SCRUB",
-  "COOKE",
   "LINUX",
   "AIDES",
   "SLABS",
@@ -3990,5 +3989,14 @@ export const WORDS = new Set( [
   "PEAKY",
   "VAUNT",
   "AMENS",
-  "RICED"
+  "RICED",
+  "RICES",
+  "RICER",
+  "MOXIE",
+  "PANKO",
+  "DARBY",
+  "PIPPY",
+  "RENDS",
+  "REBUS",
+  "REBUY"
 ] );
