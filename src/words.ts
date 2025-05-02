@@ -1327,7 +1327,6 @@ export const WORDS = new Set( [
   "FETCH",
   "STOLE",
   "QUEER",
-  "AIRES",
   "TOWEL",
   "BOOST",
   "LIONS",
@@ -2190,7 +2189,6 @@ export const WORDS = new Set( [
   "STUDS",
   "ERRED",
   "COBRA",
-  "SUSIE",
   "NANNY",
   "ARIES",
   "ADORE",
@@ -4004,5 +4002,14 @@ export const WORDS = new Set( [
   "TASES",
   "TULES",
   "PUKED",
-  "DASHY"
+  "DASHY",
+  "FUNKS",
+  "GUNKS",
+  "TRIKE",
+  "POLED",
+  "PUNTS",
+  "ANTES",
+  "THROE",
+  "POCKY",
+  "ROUTS"
 ] );
