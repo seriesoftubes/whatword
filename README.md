@@ -9,3 +9,5 @@ To run, do:
 npm i
 npm run dev
 ```
+
+### This project is not intended for active development. Issues and contributions are handled on a best effort basis.
