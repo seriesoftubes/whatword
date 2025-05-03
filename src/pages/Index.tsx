@@ -6,6 +6,9 @@ import { type GameStatus, type GuessedLetter, type LetterPresence, type Key, typ
 import { blurEverything, comparePresence, NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
 
 
+const GRADIENT = 'linear-gradient(0deg, rgb(28, 21, 53) 0%, rgb(81, 58, 173) 100%)';
+
+
 function getLetterPresences(guess: string, answer: string): LetterPresence[] {
   const answerCounts: Record<string, number> = {};
   for (let i = 0; i < 5; i++) {
@@ -160,15 +163,15 @@ const Index: React.FC = () => {
   // Compute display: up to NUM_TURNS rows + current attempt
   return (
     <main className="min-h-screen flex flex-col items-center justify-start gap-6"
-      style={{ background: "linear-gradient(0deg, rgb(190, 173, 255) 0%, rgb(241, 240, 251) 100%)", fontFamily: "Inter, system-ui,sans-serif" }}>
+      style={{ background: GRADIENT, fontFamily: "Inter, system-ui,sans-serif" }}>
       <div className="w-full py-2 text-center">
-        <h1 className="text-3xl font-bold tracking-tight mb-0 text-wordle-correct drop-shadow-sm">Wordle</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-0 text-wordle-title drop-shadow-sm">Wordle</h1>
       </div>
       <div className="mb-1" style={{ minHeight: 348 }}>
         <GuessesBoard guesses={guesses} currentGuess={currentGuess} turn={turn} />
         {(gameStatus === "won" || gameStatus === "lost") && (
           <div className="mt-4 flex flex-col items-center">
-            <span className="text-lg md:text-xl font-semibold text-wordle-correct mb-2 animate-bounce">
+            <span className="text-lg md:text-xl font-semibold text-wordle-title mb-2 animate-bounce">
               {gameStatus === "won" ? "🎉 Correct!!" : `The word was: ${answer}`}
             </span>
             <button className="px-4 py-2 my-2 rounded-lg bg-wordle-accent text-white hover:bg-wordle-correct transition-all shadow-md" onClick={handleRestart}>

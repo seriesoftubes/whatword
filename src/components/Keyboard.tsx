@@ -23,7 +23,7 @@ const KEY_PATTERNS: Map<Key, string> = new Map([
 const BACKGROUNDS: Map<LetterPresence, string> = new Map([
   ["correct", "bg-wordle-correct text-white"],
   ["present", "bg-wordle-present"],
-  ["absent", "bg-wordle-absent text-gray-400"]
+  ["absent", "bg-wordle-absent text-gray-500"]
 ]);
 
 interface KeyboardProps {
@@ -44,7 +44,7 @@ export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences }) => {
     } else if (key === "ENTER" || key === "BACK") {
       return "bg-wordle-accent text-white";
     }
-    return "bg-wordle-key";
+    return "bg-wordle-key text-white";
   };
 
   return (
