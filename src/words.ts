@@ -4011,5 +4011,7 @@ export const WORDS = new Set( [
   "ANTES",
   "THROE",
   "POCKY",
-  "ROUTS"
+  "ROUTS",
+  "PLAIT",
+  "TRUED"
 ] );
