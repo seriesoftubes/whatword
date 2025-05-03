@@ -4002,6 +4002,8 @@ export const WORDS = new Set( [
   "TASES",
   "TULES",
   "PUKED",
+  "PUKES",
+  "PUKER",
   "DASHY",
   "FUNKS",
   "GUNKS",
@@ -4275,5 +4277,6 @@ export const WORDS = new Set( [
   "WRACK",
   "YAHOO",
   "YATES",
-  "YIKES"
+  "YIKES",
+  "CORGI"
 ] );
