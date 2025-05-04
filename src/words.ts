@@ -2080,6 +2080,8 @@ export const WORDS = new Set( [
   "DRIER",
   "REGAL",
   "ROVER",
+  "ROVED",
+  "ROVES",
   "DAZED",
   "DRYER",
   "HERON",
@@ -4278,5 +4280,8 @@ export const WORDS = new Set( [
   "YAHOO",
   "YATES",
   "YIKES",
-  "CORGI"
+  "CORGI",
+  "DRAPS",
+  "LIMEY",
+  "BOINK"
 ] );
