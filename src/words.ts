@@ -2587,7 +2587,6 @@ export const WORDS = new Set( [
   "SPOCK",
   "FANGS",
   "CLOTS",
-  "PALEY",
   "GLINT",
   "PETAL",
   "ACORN",
@@ -4255,7 +4254,6 @@ export const WORDS = new Set( [
   "TESLA",
   "THRUM",
   "TILDE",
-  "TITTY",
   "TONNE",
   "TORUS",
   "TRICE",
@@ -4272,7 +4270,6 @@ export const WORDS = new Set( [
   "WHINY",
   "WIDEN",
   "WIGAN",
-  "WILLY",
   "WOOER",
   "WOOLY",
   "WOOZY",
@@ -4283,5 +4280,9 @@ export const WORDS = new Set( [
   "CORGI",
   "DRAPS",
   "LIMEY",
-  "BOINK"
+  "BOINK",
+  "GAMEY",
+  "MULLS",
+  "NULLS",
+  "HOMED"
 ] );
