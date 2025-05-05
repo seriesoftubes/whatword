@@ -63,13 +63,14 @@ const Index: React.FC = () => {
 
   const _submitGuess = () => {
     if (currentGuess.length !== WORD_LENGTH) {
-      // TODO: shaking animation here.
       return;
     }
     if (!WORDS.has(currentGuess)) {
-      // TODO: shaking animation here.
-      window.alert("Not in word list.");
-      return;
+      if (window.confirm(`The word list is missing ${currentGuess}. Add it?`)) {
+        WORDS.add(currentGuess);
+      } else {
+        return;
+      }
     }
 
     const presences = getLetterPresences(currentGuess, answer);
