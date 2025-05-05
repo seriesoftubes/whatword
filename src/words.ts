@@ -4285,5 +4285,6 @@ export const WORDS = new Set( [
   "NULLS",
   "HOMED",
   "HULKY",
-  "TAXER"
+  "TAXER",
+  "WONTS"
 ] );
