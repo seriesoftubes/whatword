@@ -3619,7 +3619,6 @@ export const WORDS = new Set( [
   "UPPED",
   "LOONY",
   "ELUTE",
-  "CARBS",
   "OILER",
   "COWER",
   "NAPPY",
@@ -4284,5 +4283,7 @@ export const WORDS = new Set( [
   "GAMEY",
   "MULLS",
   "NULLS",
-  "HOMED"
+  "HOMED",
+  "HULKY",
+  "TAXER"
 ] );
