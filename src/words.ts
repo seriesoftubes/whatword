@@ -4290,5 +4290,9 @@ export const WORDS = new Set( [
   "TEALS",
   "SUMPS",
   "DOBBY",
-  "HOSED"
+  "HOSED",
+  "WHIGS",
+  "BATIK",
+  "DOTER",
+  "NUKED"
 ] );
