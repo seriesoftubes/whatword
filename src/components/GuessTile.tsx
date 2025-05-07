@@ -4,11 +4,11 @@ import { type GuessedLetter, type LetterPresence } from '@/lib/types';
 
 
 const BACKGROUNDS: Map<LetterPresence, string> = new Map([
-  ["correct", "bg-wordle-correct border-wordle-correct text-white"],
-  ["present", "bg-wordle-present border-wordle-present"],
-  ["absent", "bg-wordle-absent border-gray-800 text-gray-500"]
+  ["correct", "bg-whatword-correct border-whatword-correct text-white"],
+  ["present", "bg-whatword-present border-whatword-present"],
+  ["absent", "bg-whatword-absent border-gray-800 text-gray-500"]
 ]);
-const DEFAULT_BACKGROUND = "bg-wordle-tile border-2 border-purple-500 text-white";
+const DEFAULT_BACKGROUND = "bg-whatword-tile border-2 border-purple-500 text-white";
 const STYLES: CSSProperties = {
   fontFamily: "Inter, system-ui, sans-serif",
   userSelect: "none",

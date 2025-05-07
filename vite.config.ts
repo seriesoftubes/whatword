@@ -43,9 +43,9 @@ export default defineConfig(({ mode }) => ({
       // Updates the SW whenever a new one is detected
       registerType: 'autoUpdate',
       manifest: {
-        "id": "https://seriesoftubes.github.io/wordle",
-        "name": "Wordle",
-        "short_name": "Wordle",
+        "id": "https://seriesoftubes.github.io/whatword",
+        "name": "WhatWord",
+        "short_name": "WhatWord",
         "start_url": "/",
         "scope": "/",
         "lang": "en-US",

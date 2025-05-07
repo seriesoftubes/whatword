@@ -166,16 +166,16 @@ const Index: React.FC = () => {
     <main className="min-h-screen flex flex-col items-center justify-start gap-6"
       style={{ background: GRADIENT, fontFamily: "Inter, system-ui,sans-serif" }}>
       <div className="w-full py-2 text-center">
-        <h1 className="text-3xl font-bold tracking-tight mb-0 text-wordle-title drop-shadow-sm">Wordle</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-0 text-whatword-title drop-shadow-sm">What Word?</h1>
       </div>
       <div className="mb-1" style={{ minHeight: 348 }}>
         <GuessesBoard guesses={guesses} currentGuess={currentGuess} turn={turn} />
         {(gameStatus === "won" || gameStatus === "lost") && (
           <div className="mt-4 flex flex-col items-center">
-            <span className="text-lg md:text-xl font-semibold text-wordle-title mb-2 animate-bounce">
+            <span className="text-lg md:text-xl font-semibold text-whatword-title mb-2 animate-bounce">
               {gameStatus === "won" ? "🎉 Correct!!" : `The word was: ${answer}`}
             </span>
-            <button className="px-4 py-2 my-2 rounded-lg bg-wordle-accent text-white hover:bg-wordle-correct transition-all shadow-md" onClick={handleRestart}>
+            <button className="px-4 py-2 my-2 rounded-lg bg-whatword-accent text-white hover:bg-whatword-correct transition-all shadow-md" onClick={handleRestart}>
               New Game
             </button>
           </div>

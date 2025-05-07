@@ -18,7 +18,7 @@ export default {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 			},
 			colors: {
-				wordle: {
+				whatword: {
 					bg: "#F1F0FB",
 					tile: 'rgb(27, 3, 82)',
 					title: "#9b87f5",

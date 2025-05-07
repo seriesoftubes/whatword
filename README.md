@@ -1,4 +1,4 @@
-# Wordle
+# WhatWord
 
 ## How to install and run locally
 
