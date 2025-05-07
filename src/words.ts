@@ -4294,5 +4294,7 @@ export const WORDS = new Set( [
   "WHIGS",
   "BATIK",
   "DOTER",
-  "NUKED"
+  "NUKED",
+  "PLODS",
+  "LAMER"
 ] );
