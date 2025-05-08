@@ -60,7 +60,7 @@ export default defineConfig(({ mode }) => ({
         "screenshots": [
           {
             "src": "screenshot-1.png",
-            "sizes": "1280x720",
+            "sizes": "1125x2436",
             "type": "image/png"
           }
         ],
