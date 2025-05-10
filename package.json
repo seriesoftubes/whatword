@@ -9,7 +9,7 @@
     "build:dev": "tsc && vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "dependencies": {
     "clsx": "^2.1.1",
