@@ -47,6 +47,7 @@ export default defineConfig(({ mode }) => ({
         "id": "https://seriesoftubes.github.io/whatword",
         "name": "WhatWord",
         "short_name": "WhatWord",
+        "description": "Guess the 5 letter word",
         "start_url": "/whatword",
         "scope": "/whatword",
         "lang": "en-US",
