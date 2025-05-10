@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => ({
   test: {
     include: ['src/**/*test.ts'],
   },
+  base: mode == 'production' ? "https://seriesoftubes.github.io/whatword/" : '/',
   plugins: [
     basicSsl({
       name: 'seriesoftubes',
