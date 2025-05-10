@@ -8,7 +8,10 @@ on:
       - '**'
       - '!dist/**'
 
-permissions: write-all
+permissions:
+  contents: read
+  pages: write
+  id-token: read
 
 jobs:
   build:
