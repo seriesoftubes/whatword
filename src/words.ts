@@ -4303,5 +4303,9 @@ export const WORDS = new Set( [
   "SHILL",
   "GOADS",
   "MOPEY",
-  "TINKS"
+  "TINKS",
+  "OUTRO",
+  "TUBED",
+  "PLINK",
+  "TRUES"
 ] );
