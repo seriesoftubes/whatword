@@ -61,7 +61,7 @@ export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences }) => {
                 className={combineCssClasses(
                   "flex-1 px-1 py-2 md:py-3 md:px-2 rounded-md md:rounded-lg font-semibold text-base transition-all duration-200",
                   backgroundClass,
-                  "active:scale-50"
+                  "active:bg-white"
                 )}
                 style={{ minWidth: width, maxWidth: 150 }}
                 onClick={ () => onClickKey(key) }
