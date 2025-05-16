@@ -1456,7 +1456,6 @@ export const WORDS = new Set( [
   "ATTIC",
   "FORGE",
   "WRECK",
-  "DOWNS",
   "VIGOR",
   "TUNED",
   "COCOA",
@@ -2220,7 +2219,6 @@ export const WORDS = new Set( [
   "EPICS",
   "JOKED",
   "WALLY",
-  "CELLE",
   "DOVES",
   "BEIGE",
   "ABACK",
@@ -4307,5 +4305,15 @@ export const WORDS = new Set( [
   "OUTRO",
   "TUBED",
   "PLINK",
-  "TRUES"
+  "TRUES",
+  "BUNTS",
+  "MUSTS",
+  "GAMED",
+  "MELTY",
+  "GOOPY",
+  "ROILS",
+  "DIRKS",
+  "RAVEL",
+  "WANLY",
+  "MOPER"
 ] );
