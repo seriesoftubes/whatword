@@ -23,7 +23,7 @@ const KEY_PATTERNS: Map<Key, string> = new Map([
 const BACKGROUNDS: Map<LetterPresence, string> = new Map([
   ["correct", "bg-whatword-correct text-white"],
   ["present", "bg-whatword-present"],
-  ["absent", "bg-whatword-absent text-gray-500"]
+  ["absent", "bg-whatword-absent text-gray-400"]
 ]);
 
 interface KeyboardProps {

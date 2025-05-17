@@ -6,7 +6,7 @@ import { type GuessedLetter, type LetterPresence } from '@/lib/types';
 const BACKGROUNDS: Map<LetterPresence, string> = new Map([
   ["correct", "bg-whatword-correct border-whatword-correct text-white"],
   ["present", "bg-whatword-present border-whatword-present"],
-  ["absent", "bg-whatword-absent border-gray-800 text-gray-500"]
+  ["absent", "bg-whatword-absent border-gray-800 text-gray-400"]
 ]);
 const DEFAULT_BACKGROUND = "bg-whatword-tile border-2 border-purple-500 text-white";
 const STYLES: CSSProperties = {

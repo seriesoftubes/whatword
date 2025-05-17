@@ -23,7 +23,7 @@ export default {
 					tile: 'rgb(27, 3, 82)',
 					title: "#9b87f5",
 					correct: 'rgb(10, 165, 92)',
-					present: 'rgb(76, 122, 180)',
+					present: '#FF884D',
 					absent: 'rgb(0, 0, 0)',
 					key: 'rgb(125, 88, 255)',
 					accent: "#9b87f5",
