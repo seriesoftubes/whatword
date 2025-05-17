@@ -161,12 +161,18 @@ const Index: React.FC = () => {
     setGameStatus("playing");
   };
 
+  const showVersion = () => {
+    const version = import.meta.env.VITE_APP_VERSION;
+    alert(`Version ${version}`);
+  };
+
   // Compute display: up to NUM_TURNS rows + current attempt
   return (
     <main className="min-h-screen flex flex-col items-center justify-start gap-6"
       style={{ background: GRADIENT, fontFamily: "Inter, system-ui,sans-serif" }}>
       <div className="w-full py-2 text-center">
-        <h1 className="text-3xl font-bold tracking-tight mb-0 text-whatword-title drop-shadow-sm">What Word?</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-0 text-whatword-title drop-shadow-sm"
+            onClick={showVersion}>What Word?</h1>
       </div>
       <div className="mb-1" style={{ minHeight: 348 }}>
         <GuessesBoard guesses={guesses} currentGuess={currentGuess} turn={turn} />
