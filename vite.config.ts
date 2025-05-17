@@ -3,14 +3,14 @@ import { dirname, join, resolve } from "path";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 import { checker } from "vite-plugin-checker";
-import { VitePWA } from 'vite-plugin-pwa';
-import basicSsl from '@vitejs/plugin-basic-ssl';
+import { VitePWA } from "vite-plugin-pwa";
+import basicSsl from "@vitejs/plugin-basic-ssl";
 import react from "@vitejs/plugin-react-swc";
 
 
 function getPackageJsonVersion(): string {
-  const jsonPath = join(dirname(fileURLToPath(import.meta.url)), 'package.json');
-  const packageJsonRaw = readFileSync(jsonPath, 'utf8');
+  const jsonPath = join(dirname(fileURLToPath(import.meta.url)), "package.json");
+  const packageJsonRaw = readFileSync(jsonPath, "utf8");
   const packageJson = JSON.parse(packageJsonRaw);
   return JSON.stringify(packageJson.version);
 }
@@ -22,40 +22,40 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   test: {
-    include: ['src/**/*test.ts'],
+    include: ["src/**/*test.ts"],
   },
-  base: mode == 'production' ? "/whatword/" : '/',
+  base: mode == "production" ? "/whatword/" : "/",
   define: {
-    'import.meta.env.VITE_APP_VERSION': getPackageJsonVersion(),
+    "import.meta.env.VITE_APP_VERSION": getPackageJsonVersion(),
   },
   plugins: [
     basicSsl({
-      name: 'seriesoftubes',
-      domains: ['seriesoftubes.github.io'],
-      certDir: './certs',
+      name: "seriesoftubes",
+      domains: ["seriesoftubes.github.io"],
+      certDir: "./certs",
     }),
     react(),
     checker({ typescript: true }),
     VitePWA({
-      strategies: 'generateSW',
+      strategies: "generateSW",
       injectRegister: false,
       devOptions: {
         enabled: true,
-        navigateFallback: 'index.html',
+        navigateFallback: "index.html",
         suppressWarnings: true,
-        type: 'module'
+        type: "module"
       },
       workbox: {
-        globDirectory: 'dist/',
+        globDirectory: "dist/",
         globPatterns: ["**/*"],
         cleanupOutdatedCaches: true,
         clientsClaim: true,
-        swDest: 'dist/sw.js',
-        navigateFallback: 'index.html'
+        swDest: "dist/sw.js",
+        navigateFallback: "index.html"
       },
       includeAssets: ["**/*"],
       // Updates the SW whenever a new one is detected
-      registerType: 'autoUpdate',
+      registerType: "autoUpdate",
       manifest: {
         "id": "https://seriesoftubes.github.io/whatword",
         "name": "WhatWord",
