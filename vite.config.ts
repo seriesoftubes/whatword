@@ -8,9 +8,12 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 import react from "@vitejs/plugin-react-swc";
 
 
-const jsonPath = join(dirname(fileURLToPath(import.meta.url)), 'package.json');
-const packageJsonRaw = readFileSync(jsonPath, 'utf8');
-const packageJson = JSON.parse(packageJsonRaw);
+function getPackageJsonVersion(): string {
+  const jsonPath = join(dirname(fileURLToPath(import.meta.url)), 'package.json');
+  const packageJsonRaw = readFileSync(jsonPath, 'utf8');
+  const packageJson = JSON.parse(packageJsonRaw);
+  return JSON.stringify(packageJson.version);
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -23,7 +26,7 @@ export default defineConfig(({ mode }) => ({
   },
   base: mode == 'production' ? "/whatword/" : '/',
   define: {
-    'import.meta.env.VITE_APP_VERSION': JSON.stringify(packageJson.version),
+    'import.meta.env.VITE_APP_VERSION': getPackageJsonVersion(),
   },
   plugins: [
     basicSsl({
