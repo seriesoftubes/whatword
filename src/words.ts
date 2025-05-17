@@ -4141,7 +4141,6 @@ export const WORDS = new Set( [
   "MANGE",
   "MANGY",
   "MARIA",
-  "MASSE",
   "MERLE",
   "MINIM",
   "MOIRA",
@@ -4315,5 +4314,9 @@ export const WORDS = new Set( [
   "DIRKS",
   "RAVEL",
   "WANLY",
-  "MOPER"
+  "MOPER",
+  "NEWTS",
+  "NEATS",
+  "ACIDY",
+  "WONKY"
 ] );
