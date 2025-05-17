@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useRef } from "react";
-import { WORDS } from "@/words";
+import { WORDS, OTHER_WORDS } from "@/words";
 import { GuessesBoard } from "@/components/GuessesBoard";
 import { Keyboard } from "@/components/Keyboard";
 import { type GameStatus, type GuessedLetter, type LetterPresence, type Key, type KeyPresences } from "@/lib/types";
@@ -65,7 +65,7 @@ const Index: React.FC = () => {
     if (currentGuess.length !== WORD_LENGTH) {
       return;
     }
-    if (!WORDS.has(currentGuess)) {
+    if (!WORDS.has(currentGuess) && !OTHER_WORDS.has(currentGuess)) {
       if (window.confirm(`The word list is missing ${currentGuess}. Add it?`)) {
         WORDS.add(currentGuess);
       } else {
