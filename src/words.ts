@@ -1,3 +1,7 @@
+/**
+ * The set of words that can be answers or guesses.
+ * This should have no overlaps with OTHER_WORDS.
+ */
 export const WORDS = new Set( [
   "ABACK",
   "ABASE",
