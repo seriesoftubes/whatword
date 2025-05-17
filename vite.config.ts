@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => ({
   test: {
     include: ['src/**/*test.ts'],
   },
-  base: mode == 'production' ? "https://seriesoftubes.github.io/whatword/" : '/',
+  base: mode == 'production' ? "/whatword/" : '/',
   define: {
     'import.meta.env.VITE_APP_VERSION': JSON.stringify(packageJson.version),
   },
