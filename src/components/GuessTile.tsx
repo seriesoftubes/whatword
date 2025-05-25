@@ -23,12 +23,25 @@ interface GuessTileProps {
   onLongPress?: () => void;
 }
 
+let timeoutId = 0;
+
 /** Renders a single tile on the guesses board. */
 export const GuessTile: React.FC<GuessTileProps> = (props: GuessTileProps) => {
-  // TODO: make onLongPress wait 350ms before action.
   const {guessedLetter, hasCursor, onLongPress} = props;
   const {value, status, reveal} = guessedLetter;
   const background = status ? BACKGROUNDS.get(status) : DEFAULT_BACKGROUND;
+
+  const onStartClicking = () => {
+    if (!onLongPress) return;
+    timeoutId = window.setTimeout(onLongPress, 300);
+  };
+  const onStopClicking = () => {
+    if (timeoutId) {
+      window.clearTimeout(timeoutId);
+      timeoutId = 0;
+    }
+  };
+
   return (
     <div
       className={combineCssClasses(
@@ -37,7 +50,10 @@ export const GuessTile: React.FC<GuessTileProps> = (props: GuessTileProps) => {
         reveal && "animate-pop",
         hasCursor && "with-cursor"
       )}
-      onClick={onLongPress}
+      onPointerDown={onStartClicking}
+      onPointerUp={onStopClicking}
+      onPointerLeave={onStopClicking}
+      onPointerCancel={onStopClicking}
       style={STYLES}
       aria-label={value}>
       {value}
