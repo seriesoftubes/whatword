@@ -41,3 +41,12 @@ export function comparePresence(a: LetterPresence, b: LetterPresence): number {
   if (b === 'present') return 1;
   throw new Error('unreachable');
 }
+
+/** Upserts `x` at `index` in `word`. */
+export function replaceLetter(word: string, x: string, index: number): string {
+  if (index < 0) throw new Error(`index ${index} must be >= 0`);
+  if (index >= word.length) return word + x;
+  const letters = word.split('');
+  letters[index] = x;
+  return letters.join('');
+}

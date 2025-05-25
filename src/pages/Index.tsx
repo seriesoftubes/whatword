@@ -3,7 +3,7 @@ import { WORDS, OTHER_WORDS } from "@/words";
 import { GuessesBoard } from "@/components/GuessesBoard";
 import { Keyboard } from "@/components/Keyboard";
 import { type GameStatus, type GuessedLetter, type LetterPresence, type Key, type KeyPresences } from "@/lib/types";
-import { blurEverything, comparePresence, NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
+import { blurEverything, comparePresence, replaceLetter, NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
 
 
 const GRADIENT = 'linear-gradient(0deg, rgb(28, 21, 53) 0%, rgb(81, 58, 173) 100%)';
@@ -124,7 +124,7 @@ const Index: React.FC = () => {
       setCurrentGuess((prev) => prev.slice(0, -1));
     } else if (/^[A-Z]$/.test(key)) {
       if (currentGuess.length < WORD_LENGTH) {
-        setCurrentGuess((prev) => prev + key);
+        setCurrentGuess((prev) => replaceLetter(prev, key, currentGuess.length));
       }
     } else {
       throw new Error("unrecognized key: " + key);

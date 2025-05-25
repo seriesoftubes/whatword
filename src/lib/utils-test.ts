@@ -1,7 +1,43 @@
 import { expect, test } from 'vitest';
 import { LetterPresenceValues } from './types';
-import { comparePresence } from './utils';
+import { comparePresence, replaceLetter } from './utils';
 
+
+test('replaceLetter appends to the end of a word', () => {
+  const word = 'foun';
+  const got = replaceLetter(word, 'd', 4);
+  expect(got).toBe('found');
+});
+
+test('replaceLetter appends to the end of a word - high index', () => {
+  const word = 'foun';
+  const got = replaceLetter(word, 'd', 40);
+  expect(got).toBe('found');
+});
+
+test('replaceLetter replaces the first letter of a word', () => {
+  const word = 'foun';
+  const got = replaceLetter(word, 'd', 0);
+  expect(got).toBe('doun');
+});
+
+test('replaceLetter replaces the second letter of a word', () => {
+  const word = 'foun';
+  const got = replaceLetter(word, 'd', 1);
+  expect(got).toBe('fdun');
+});
+
+test('replaceLetter replaces the third letter of a word', () => {
+  const word = 'foun';
+  const got = replaceLetter(word, 'd', 2);
+  expect(got).toBe('fodn');
+});
+
+test('replaceLetter replaces the last letter of a word', () => {
+  const word = 'foun';
+  const got = replaceLetter(word, 'd', 3);
+  expect(got).toBe('foud');
+});
 
 test('there are only 3 values in LetterPresence', () =>  {
   expect(LetterPresenceValues.length).toBe(3);
