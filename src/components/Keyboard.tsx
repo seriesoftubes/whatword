@@ -1,5 +1,5 @@
 import React from "react";
-import { combineCssClasses, blurEverything } from "@/lib/utils";
+import { combineCssClasses, blurEverything, WORD_LENGTH } from "@/lib/utils";
 import { type LetterPresence, type Key, type KeyPresences } from '@/lib/types';
 
 
@@ -20,22 +20,29 @@ const KEY_PATTERNS: Map<Key, string> = new Map([
   ["BACK", "DEL ⌫"],
 ]);
 
+const ABSENT_BACKGROUND = "bg-whatword-absent text-gray-400";
+
 const BACKGROUNDS: Map<LetterPresence, string> = new Map([
   ["correct", "bg-whatword-correct text-white"],
   ["present", "bg-whatword-present"],
-  ["absent", "bg-whatword-absent text-gray-400"]
+  ["absent", ABSENT_BACKGROUND]
 ]);
+
+const ACTION_KEY_BACKGROUND = "bg-whatword-accent text-white";
+
+const DEFAULT_BACKGROUND = "bg-whatword-key text-white";
 
 interface KeyboardProps {
   onKey: (key: Key) => void;
   keyPresences: KeyPresences;
+  guessLength: number;
 }
 
 let timeoutId = 0;
 let repeatId = 0;
 
 /** Component that renders the keyboard for entering guesses. */
-export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences }) => {
+export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences, guessLength }) => {
   const onClickKey = (key: Key) => {
     blurEverything();
     onKey(key);
@@ -60,14 +67,19 @@ export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences }) => {
     }
   };
 
+  const isEnterEnabled = guessLength == WORD_LENGTH;
+  const isDeleteEnabled = guessLength > 0;
+
   const getBackgroundClass = (key: Key) => {
     const pres = keyPresences[key];
     if (pres && BACKGROUNDS.has(pres)) {
       return BACKGROUNDS.get(pres)!;
-    } else if (key === "ENTER" || key === "BACK") {
-      return "bg-whatword-accent text-white";
+    } else if (key === "ENTER"){
+      return isEnterEnabled ? ACTION_KEY_BACKGROUND : ABSENT_BACKGROUND;
+    } else if (key === "BACK") {
+      return isDeleteEnabled ? ACTION_KEY_BACKGROUND : ABSENT_BACKGROUND;
     }
-    return "bg-whatword-key text-white";
+    return DEFAULT_BACKGROUND;
   };
 
   return (
@@ -78,9 +90,11 @@ export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences }) => {
             const backgroundClass = getBackgroundClass(key);
             const width = KEY_WIDTHS.get(key) || 32;
             const pattern = KEY_PATTERNS.get(key) || key;
+            const isDisabled = (key == 'ENTER' && !isEnterEnabled) || (key == 'BACK' && !isDeleteEnabled);
             return (
               <button
                 key={key}
+                disabled={isDisabled}
                 className={combineCssClasses(
                   "flex-1 px-1 py-2 md:py-3 md:px-2 rounded-md md:rounded-lg font-semibold text-base transition-all duration-200",
                   backgroundClass,

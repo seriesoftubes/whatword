@@ -187,7 +187,8 @@ const Index: React.FC = () => {
           </div>
         )}
       </div>
-      <Keyboard onKey={cachedHandleKey} keyPresences={keyPresences} />
+      <Keyboard onKey={cachedHandleKey} keyPresences={keyPresences}
+                guessLength={currentGuess.length} />
       <div className="mt-8 mb-2 text-sm text-gray-400 max-w-[340px] text-center"></div>
       <input ref={inputRef} style={{ position: "absolute", left: -1000, top: -1000 }} tabIndex={-1} readOnly aria-hidden />
     </main>
