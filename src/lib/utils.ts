@@ -45,6 +45,7 @@ export function comparePresence(a: LetterPresence, b: LetterPresence): number {
 /** Upserts `x` at `index` in `word`. */
 export function replaceLetter(word: string, x: string, index: number): string {
   if (index < 0) throw new Error(`index ${index} must be >= 0`);
+  if (x.length > 1) throw new Error(`x "${x}" must be at most 1 character`);
   if (index >= word.length) return word + x;
   const letters = word.split('');
   letters[index] = x;
