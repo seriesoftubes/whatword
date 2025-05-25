@@ -26,6 +26,13 @@ export const GuessesBoard: React.FC<BoardProps> = (props: BoardProps) => {
   const { guesses, currentGuess, turn, forceCursorIndex, onUpdateCursor } = props;
   const cursorIndex = forceCursorIndex ?? currentGuess.length;
   const allCorrect = isAllCorrect(guesses);
+  const onLongPress = (idx: number) => {
+    // Only update the cursor for tiles that have a letter in them already.
+    if (currentGuess[idx]) {
+      onUpdateCursor(idx);
+    }
+  };
+
   return (
     <div className="grid gap-2 md:gap-3" style={{ gridTemplateRows: `repeat(${NUM_TURNS}, 1fr)` }}>
       {Array(NUM_TURNS).fill(null).map((_, rowIdx) => {
@@ -49,7 +56,7 @@ export const GuessesBoard: React.FC<BoardProps> = (props: BoardProps) => {
                 reveal: false
               }}
               hasCursor={!allCorrect && idx == cursorIndex}
-              onLongPress={() => onUpdateCursor(idx)} />
+              onLongPress={() => onLongPress(idx)} />
           ));
         } else {
           tiles = Array(WORD_LENGTH).fill(null).map((_, idx) => (
