@@ -1,7 +1,7 @@
 import React from "react";
 import { GuessTile } from "./GuessTile";
-import { type GuessedLetter } from '@/lib/types';
-import { NUM_TURNS, WORD_LENGTH } from '@/lib/utils';
+import { type GuessedLetter } from "@/lib/types";
+import { NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
 
 
 /** State of the game. */
