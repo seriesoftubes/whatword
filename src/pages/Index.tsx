@@ -57,7 +57,7 @@ const Index: React.FC = () => {
   const [turn, setTurn] = useState<number>(0);
   const [keyPresences, setKeyPresences] = useState<KeyPresences>({} as KeyPresences);
   const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
-  const [forceCursorIndex, setForceCursorIndex] = useState<number|null>(null);
+  const [forceCursorIndex, setForceCursorIndex] = useState<number | null>(null);
 
   // Focus input for hardware keyboard (optional; not critical for iOS)
   const inputRef = useRef<HTMLInputElement>(null);
@@ -76,7 +76,7 @@ const Index: React.FC = () => {
 
     const presences = getLetterPresences(currentGuess, answer);
     const revealed: GuessedLetter[] = presences.map((status, i) => {
-      return {value: currentGuess[i], status, reveal: true};
+      return { value: currentGuess[i], status, reveal: true };
     });
     setGuesses((prev) => [...prev, revealed]);
 
@@ -193,12 +193,12 @@ const Index: React.FC = () => {
       style={{ background: GRADIENT, fontFamily: "Inter, system-ui,sans-serif" }}>
       <div className="w-full py-2 text-center">
         <h1 className="text-3xl font-bold tracking-tight mb-0 text-whatword-title drop-shadow-sm"
-            onClick={showVersion}>What Word?</h1>
+          onClick={showVersion}>What Word?</h1>
       </div>
       <div className="mb-1" style={{ minHeight: 348 }}>
         <GuessesBoard guesses={guesses} currentGuess={currentGuess} turn={turn}
-                      forceCursorIndex={forceCursorIndex}
-                      onUpdateCursor={onUpdateCursor} />
+          forceCursorIndex={forceCursorIndex}
+          onUpdateCursor={onUpdateCursor} />
         {(gameStatus === "won" || gameStatus === "lost") && (
           <div className="mt-4 flex flex-col items-center">
             <span className="text-lg md:text-xl font-semibold text-whatword-title mb-2 animate-bounce">
@@ -211,7 +211,7 @@ const Index: React.FC = () => {
         )}
       </div>
       <Keyboard onKey={cachedHandleKey} keyPresences={keyPresences}
-                guessLength={currentGuess.length} />
+        guessLength={currentGuess.length} />
       <div className="mt-8 mb-2 text-sm text-gray-400 max-w-[340px] text-center"></div>
       <input ref={inputRef} style={{ position: "absolute", left: -1000, top: -1000 }} tabIndex={-1} readOnly aria-hidden />
     </main>

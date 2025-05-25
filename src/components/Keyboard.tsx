@@ -6,7 +6,7 @@ import { type LetterPresence, type Key, type KeyPresences } from '@/lib/types';
 const KEY_ROWS: Array<Array<Key>> = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
   ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-  [ "Z", "X", "C", "V", "B", "N", "M", "BACK"],
+  ["Z", "X", "C", "V", "B", "N", "M", "BACK"],
   ["ENTER"]
 ];
 
@@ -74,7 +74,7 @@ export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences, guessLe
     const pres = keyPresences[key];
     if (pres && BACKGROUNDS.has(pres)) {
       return BACKGROUNDS.get(pres)!;
-    } else if (key === "ENTER"){
+    } else if (key === "ENTER") {
       return isEnterEnabled ? ACTION_KEY_BACKGROUND : ABSENT_BACKGROUND;
     } else if (key === "BACK") {
       return isDeleteEnabled ? ACTION_KEY_BACKGROUND : ABSENT_BACKGROUND;
@@ -101,10 +101,10 @@ export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences, guessLe
                   "active:bg-white"
                 )}
                 style={{ minWidth: width, maxWidth: 150 }}
-                onPointerDown={ () => onClickKey(key) }
-                onPointerUp={ () => onStopClickingKey() }
-                onPointerLeave={ () => onStopClickingKey() }
-                onPointerCancel={ () => onStopClickingKey() }
+                onPointerDown={() => onClickKey(key)}
+                onPointerUp={() => onStopClickingKey()}
+                onPointerLeave={() => onStopClickingKey()}
+                onPointerCancel={() => onStopClickingKey()}
                 aria-label={key}
                 tabIndex={-1}>
                 {pattern}

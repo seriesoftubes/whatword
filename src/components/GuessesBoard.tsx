@@ -9,7 +9,7 @@ interface BoardProps {
   guesses: GuessedLetter[][];
   currentGuess: string;
   turn: number;
-  forceCursorIndex: number|null;
+  forceCursorIndex: number | null;
   onUpdateCursor: (i: number) => void;
 }
 
@@ -33,31 +33,31 @@ export const GuessesBoard: React.FC<BoardProps> = (props: BoardProps) => {
         if (rowIdx < turn) {
           tiles = guesses[rowIdx].map((l, idx) => (
             <GuessTile key={idx}
-                       guessedLetter={{
-                         value: l.value,
-                         status: l.status,
-                         reveal: l.reveal
-                       }} />
+              guessedLetter={{
+                value: l.value,
+                status: l.status,
+                reveal: l.reveal
+              }} />
           ));
         } else if (rowIdx === turn) {
           // This is the row for the current guess. It renders the cursor and
           // allows the cursor to move around.
           tiles = Array(WORD_LENGTH).fill(null).map((_, idx) => (
             <GuessTile key={idx}
-                       guessedLetter={{
-                         value: currentGuess[idx] || "",
-                         reveal: false
-                       }}
-                       hasCursor={ !allCorrect && idx == cursorIndex }
-                       onLongPress={ () => onUpdateCursor(idx) } />
+              guessedLetter={{
+                value: currentGuess[idx] || "",
+                reveal: false
+              }}
+              hasCursor={!allCorrect && idx == cursorIndex}
+              onLongPress={() => onUpdateCursor(idx)} />
           ));
         } else {
           tiles = Array(WORD_LENGTH).fill(null).map((_, idx) => (
             <GuessTile key={idx}
-                       guessedLetter={{
-                         value: "",
-                         reveal: false
-                       }} />
+              guessedLetter={{
+                value: "",
+                reveal: false
+              }} />
           ));
         }
         return (

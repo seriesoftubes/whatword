@@ -39,7 +39,7 @@ test('replaceLetter replaces the last letter of a word', () => {
   expect(got).toBe('foud');
 });
 
-test('there are only 3 values in LetterPresence', () =>  {
+test('there are only 3 values in LetterPresence', () => {
   expect(LetterPresenceValues.length).toBe(3);
 });
 
