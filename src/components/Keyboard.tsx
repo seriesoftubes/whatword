@@ -87,8 +87,10 @@ export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences }) => {
                   "active:bg-white"
                 )}
                 style={{ minWidth: width, maxWidth: 150 }}
-                onMouseDown={ () => onClickKey(key) }
-                onMouseUp={ () => onStopClickingKey() }
+                onPointerDown={ () => onClickKey(key) }
+                onPointerUp={ () => onStopClickingKey() }
+                onPointerLeave={ () => onStopClickingKey() }
+                onPointerCancel={ () => onStopClickingKey() }
                 aria-label={key}
                 tabIndex={-1}>
                 {pattern}
