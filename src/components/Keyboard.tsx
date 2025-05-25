@@ -31,12 +31,35 @@ interface KeyboardProps {
   keyPresences: KeyPresences;
 }
 
+let timeoutId = 0;
+let repeatId = 0;
+
 /** Component that renders the keyboard for entering guesses. */
 export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences }) => {
   const onClickKey = (key: Key) => {
     blurEverything();
     onKey(key);
+    if (key != 'BACK') {
+      return;
+    }
+    // Allow repeating the BACK action key.
+    timeoutId = window.setTimeout(() => {
+      repeatId = window.setInterval(() => {
+        onKey(key);
+      }, 250);
+    }, 150);
   };
+  const onStopClickingKey = () => {
+    if (timeoutId) {
+      window.clearTimeout(timeoutId);
+      timeoutId = 0;
+    }
+    if (repeatId) {
+      window.clearInterval(repeatId);
+      repeatId = 0;
+    }
+  };
+
   const getBackgroundClass = (key: Key) => {
     const pres = keyPresences[key];
     if (pres && BACKGROUNDS.has(pres)) {
@@ -64,7 +87,8 @@ export const Keyboard: React.FC<KeyboardProps> = ({ onKey, keyPresences }) => {
                   "active:bg-white"
                 )}
                 style={{ minWidth: width, maxWidth: 150 }}
-                onClick={ () => onClickKey(key) }
+                onMouseDown={ () => onClickKey(key) }
+                onMouseUp={ () => onStopClickingKey() }
                 aria-label={key}
                 tabIndex={-1}>
                 {pattern}
