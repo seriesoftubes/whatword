@@ -7,7 +7,7 @@ Ensure you have Node.js & npm installed - [install with nvm](https://github.com/
 To run, do:
 ```sh
 npm i
-./gen_certs
+./gen_certs.sh
 npm run dev
 ```
 
