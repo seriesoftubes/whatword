@@ -13,6 +13,7 @@ interface Game {
 
 /** Renders the board where the guesses go. */
 export const GuessesBoard: React.FC<Game> = ({ guesses, currentGuess, turn }) => {
+  const cursorIndex = currentGuess.length;
   return (
     <div className="grid gap-2 md:gap-3" style={{ gridTemplateRows: `repeat(${NUM_TURNS}, 1fr)` }}>
       {Array(NUM_TURNS).fill(null).map((_, rowIdx) => {
@@ -23,7 +24,8 @@ export const GuessesBoard: React.FC<Game> = ({ guesses, currentGuess, turn }) =>
           ));
         } else if (rowIdx === turn) {
           tiles = Array(WORD_LENGTH).fill(null).map((_, idx) => (
-            <GuessTile key={idx} value={currentGuess[idx] || ""} reveal={false} />
+            <GuessTile key={idx} value={currentGuess[idx] || ""} reveal={false}
+                       hasCursor={ idx == cursorIndex } />
           ));
         } else {
           tiles = Array(WORD_LENGTH).fill(null).map((_, idx) => (

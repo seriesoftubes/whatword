@@ -17,14 +17,15 @@ const STYLES: CSSProperties = {
 
 
 /** Renders a single tile on the guesses board. */
-export const GuessTile: React.FC<GuessedLetter> = ({ value, status, reveal }) => {
+export const GuessTile: React.FC<GuessedLetter> = ({ value, status, reveal, hasCursor }) => {
   const background = status ? BACKGROUNDS.get(status) : DEFAULT_BACKGROUND;
   return (
     <div
       className={combineCssClasses(
         "w-12 h-12 md:w-14 md:h-14 flex items-center justify-center font-bold text-2xl md:text-3xl rounded-lg uppercase transition-all duration-300",
         background,
-        reveal && "animate-pop"
+        reveal && "animate-pop",
+        hasCursor && "with-cursor"
       )}
       style={STYLES}
       aria-label={value}>
