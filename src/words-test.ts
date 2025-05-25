@@ -4,7 +4,7 @@ import { OTHER_WORDS, WORDS } from './words';
 
 const ALL_WORDS = WORDS.union(OTHER_WORDS);
 
-function isSet<T>(variable: any): variable is Set<T> {
+function isSet<T>(variable: unknown): variable is Set<T> {
   return variable instanceof Set;
 }
 
