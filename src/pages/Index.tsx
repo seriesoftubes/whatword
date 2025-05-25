@@ -57,6 +57,7 @@ const Index: React.FC = () => {
   const [turn, setTurn] = useState<number>(0);
   const [keyPresences, setKeyPresences] = useState<KeyPresences>({} as KeyPresences);
   const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
+  const [forceCursorIndex, setForceCursorIndex] = useState<number|null>(null);
 
   // Focus input for hardware keyboard (optional; not critical for iOS)
   const inputRef = useRef<HTMLInputElement>(null);
@@ -121,16 +122,23 @@ const Index: React.FC = () => {
         cachedSubmitGuess();
       }
     } else if (key === "BACK") {
-      setCurrentGuess((prev) => prev.slice(0, -1));
+      if (forceCursorIndex != null) {
+        setCurrentGuess((prev) => replaceLetter(prev, "", forceCursorIndex));
+      } else {
+        setCurrentGuess((prev) => prev.slice(0, -1));
+      }
     } else if (/^[A-Z]$/.test(key)) {
-      if (currentGuess.length < WORD_LENGTH) {
-        setCurrentGuess((prev) => replaceLetter(prev, key, currentGuess.length));
+      const index = forceCursorIndex ?? currentGuess.length;
+      if (index < WORD_LENGTH) {
+        setCurrentGuess((prev) => replaceLetter(prev, key, index));
       }
     } else {
       throw new Error("unrecognized key: " + key);
     }
+    setForceCursorIndex(null);
   };
-  const cachedHandleKey = useCallback(_handleKey, [currentGuess, gameStatus, cachedSubmitGuess]);
+  const cachedHandleKey = useCallback(_handleKey, [
+    currentGuess, forceCursorIndex, gameStatus, cachedSubmitGuess]);
 
   React.useEffect(() => {
     // HW keyboard support
@@ -166,6 +174,10 @@ const Index: React.FC = () => {
     alert(`Version ${version}`);
   };
 
+  const onUpdateCursor = (i: number) => {
+    setForceCursorIndex(i);
+  };
+
   // Compute display: up to NUM_TURNS rows + current attempt
   return (
     <main className="min-h-screen flex flex-col items-center justify-start gap-6"
@@ -175,7 +187,9 @@ const Index: React.FC = () => {
             onClick={showVersion}>What Word?</h1>
       </div>
       <div className="mb-1" style={{ minHeight: 348 }}>
-        <GuessesBoard guesses={guesses} currentGuess={currentGuess} turn={turn} />
+        <GuessesBoard guesses={guesses} currentGuess={currentGuess} turn={turn}
+                      forceCursorIndex={forceCursorIndex}
+                      onUpdateCursor={onUpdateCursor} />
         {(gameStatus === "won" || gameStatus === "lost") && (
           <div className="mt-4 flex flex-col items-center">
             <span className="text-lg md:text-xl font-semibold text-whatword-title mb-2 animate-bounce">

@@ -15,9 +15,19 @@ const STYLES: CSSProperties = {
   margin: 2,
 };
 
+interface GuessTileProps {
+  guessedLetter: GuessedLetter;
+  // Whether the tile should show the cursor under it.
+  hasCursor?: boolean;
+  // What, if anything, should be done when the user long presses the tile.
+  onLongPress?: () => void;
+}
 
 /** Renders a single tile on the guesses board. */
-export const GuessTile: React.FC<GuessedLetter> = ({ value, status, reveal, hasCursor }) => {
+export const GuessTile: React.FC<GuessTileProps> = (props: GuessTileProps) => {
+  // TODO: make onLongPress wait 350ms before action.
+  const {guessedLetter, hasCursor, onLongPress} = props;
+  const {value, status, reveal} = guessedLetter;
   const background = status ? BACKGROUNDS.get(status) : DEFAULT_BACKGROUND;
   return (
     <div
@@ -27,6 +37,7 @@ export const GuessTile: React.FC<GuessedLetter> = ({ value, status, reveal, hasC
         reveal && "animate-pop",
         hasCursor && "with-cursor"
       )}
+      onClick={onLongPress}
       style={STYLES}
       aria-label={value}>
       {value}

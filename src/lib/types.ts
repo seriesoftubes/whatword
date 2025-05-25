@@ -15,9 +15,6 @@ export interface GuessedLetter {
   value: string;
   status?: LetterPresence;
   reveal: boolean;
-  // Whether the GuessTile should have the cursor (it's the current guess being
-  // entered).
-  hasCursor?: boolean;
 }
 
 /** A key on the keyboard representing an action. */

@@ -4,16 +4,19 @@ import { type GuessedLetter } from "@/lib/types";
 import { NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
 
 
-/** State of the game. */
-interface Game {
+/** State of the guesses board. */
+interface BoardProps {
   guesses: GuessedLetter[][];
   currentGuess: string;
   turn: number;
+  forceCursorIndex: number|null;
+  onUpdateCursor: (i: number) => void;
 }
 
 /** Renders the board where the guesses go. */
-export const GuessesBoard: React.FC<Game> = ({ guesses, currentGuess, turn }) => {
-  const cursorIndex = currentGuess.length;
+export const GuessesBoard: React.FC<BoardProps> = (props: BoardProps) => {
+  const { guesses, currentGuess, turn, forceCursorIndex, onUpdateCursor } = props;
+  const cursorIndex = forceCursorIndex ?? currentGuess.length;
   const allCorrect = isAllCorrect(guesses);
   return (
     <div className="grid gap-2 md:gap-3" style={{ gridTemplateRows: `repeat(${NUM_TURNS}, 1fr)` }}>
@@ -21,16 +24,32 @@ export const GuessesBoard: React.FC<Game> = ({ guesses, currentGuess, turn }) =>
         let tiles: React.ReactNode[] = [];
         if (rowIdx < turn) {
           tiles = guesses[rowIdx].map((l, idx) => (
-            <GuessTile key={idx} value={l.value} status={l.status} reveal={l.reveal} />
+            <GuessTile key={idx}
+                       guessedLetter={{
+                         value: l.value,
+                         status: l.status,
+                         reveal: l.reveal
+                       }} />
           ));
         } else if (rowIdx === turn) {
+          // This is the row for the current guess. It renders the cursor and
+          // allows the cursor to move around.
           tiles = Array(WORD_LENGTH).fill(null).map((_, idx) => (
-            <GuessTile key={idx} value={currentGuess[idx] || ""} reveal={false}
-                       hasCursor={ !allCorrect && idx == cursorIndex } />
+            <GuessTile key={idx}
+                       guessedLetter={{
+                         value: currentGuess[idx] || "",
+                         reveal: false
+                       }}
+                       hasCursor={ !allCorrect && idx == cursorIndex }
+                       onLongPress={ () => onUpdateCursor(idx) } />
           ));
         } else {
           tiles = Array(WORD_LENGTH).fill(null).map((_, idx) => (
-            <GuessTile key={idx} value="" reveal={false} />
+            <GuessTile key={idx}
+                       guessedLetter={{
+                         value: "",
+                         reveal: false
+                       }} />
           ));
         }
         return (
