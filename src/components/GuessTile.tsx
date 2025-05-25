@@ -12,6 +12,9 @@ const DEFAULT_BACKGROUND = "bg-whatword-tile border-2 border-purple-500 text-whi
 const STYLES: CSSProperties = {
   fontFamily: "Inter, system-ui, sans-serif",
   userSelect: "none",
+  MozUserSelect: "none",
+  msUserSelect: "none",
+  WebkitUserSelect: "none",
   margin: 2,
 };
 

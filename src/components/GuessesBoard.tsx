@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type CSSProperties } from "react";
 import { GuessTile } from "./GuessTile";
 import { type GuessedLetter } from "@/lib/types";
 import { NUM_TURNS, WORD_LENGTH } from "@/lib/utils";
@@ -12,6 +12,14 @@ interface BoardProps {
   forceCursorIndex: number|null;
   onUpdateCursor: (i: number) => void;
 }
+
+const STYLES: CSSProperties = {
+  minHeight: 48,
+  userSelect: "none",
+  MozUserSelect: "none",
+  msUserSelect: "none",
+  WebkitUserSelect: "none"
+};
 
 /** Renders the board where the guesses go. */
 export const GuessesBoard: React.FC<BoardProps> = (props: BoardProps) => {
@@ -56,7 +64,7 @@ export const GuessesBoard: React.FC<BoardProps> = (props: BoardProps) => {
           <div
             key={rowIdx}
             className="flex gap-2 md:gap-3 justify-center"
-            style={{ minHeight: 48 }}>
+            style={STYLES}>
             {tiles}
           </div>
         );

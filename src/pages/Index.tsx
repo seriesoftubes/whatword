@@ -156,8 +156,17 @@ const Index: React.FC = () => {
         cachedHandleKey(e.key.toUpperCase() as Key);
       }
     };
+
+    const doNothing = (e: Event) => {
+      e.preventDefault();
+    };
+
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener("contextmenu", doNothing);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("contextmenu", doNothing);
+    };
   }, [currentGuess, gameStatus, turn, cachedHandleKey]);
 
   const handleRestart = () => {
