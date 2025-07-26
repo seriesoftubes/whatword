@@ -36,7 +36,7 @@ export const GuessTile: React.FC<GuessTileProps> = (props: GuessTileProps) => {
 
   const onStartClicking = () => {
     if (!onLongPress) return;
-    timeoutId = window.setTimeout(onLongPress, 300);
+    timeoutId = window.setTimeout(onLongPress, 200);
   };
   const onStopClicking = () => {
     if (timeoutId) {
