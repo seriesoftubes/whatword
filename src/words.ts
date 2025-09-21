@@ -3829,6 +3829,7 @@ export const WORDS = new Set( [
   "TRIPE",
   "TRIPS",
   "TRITE",
+  "TRODE",
   "TROLL",
   "TROOP",
   "TROPE",
